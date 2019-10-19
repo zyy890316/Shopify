@@ -390,7 +390,7 @@ $gutter: 30px;
 $gridGutterMobile: 22px;
 $section-spacing-small: 35px;
 $gridGutter: 30px; // can be a %, but nested grids will have smaller margins because of it
-$contentTopMargin: 80px;
+$contentTopMargin: 30px;
 $contentTopMarginSmall: 35px;
 $radius: 0;
 $customSelectHeight: 46px;
@@ -2949,12 +2949,12 @@ $socialIconFontStack: 'icons';
 }
 
 .product-single__title {
-  font-size: em(30px);
+  font-size: em(22px);
   margin-bottom: $gutter / 2;
   word-wrap: break-word;
 
   @include at-query($min, $postSmall) {
-    font-size: em(36px);
+    font-size: em(24px);
   }
 }
 
@@ -3130,7 +3130,7 @@ $socialIconFontStack: 'icons';
 .product-single__price--compare-at {
   @include accentFontStack;
   color: $colorHeadings;
-  font-size: em(18px);
+  font-size: em(22px);
   font-weight: $headerFontWeight;
 
   &.on-sale {
@@ -3282,3 +3282,74 @@ $socialIconFontStack: 'icons';
   display: block;
 }
 
+// Product section
+#shopify-section-product-template{
+  .product-single__title {
+    margin-bottom: 5px;
+  }
+  .product-form__item {
+    margin-bottom: 20px;
+  }
+  .product-single__price--compare-at {
+    color: #999999;
+    font-size: em(18px);
+    font-style: italic;
+  }
+  .main_image {
+    // images actually stack on top of each other, so hack border-bottom
+    border: solid 2px black;
+    border-bottom: 0px;
+  }
+  .product-single__thumbnails {
+    margin-top: 15px;
+  }
+  .hr--small {
+    width: 100%;
+    border-top: solid 1px #999999;
+  }
+  select, button, input {
+    font-family: $accentFontStack;
+    font-weight: $accentFontWeight;
+    font-style: $accentFontStyle;
+    border-radius: 3px !important;
+  }
+  select, button{
+    width: 100%;
+  }
+  .product-single__meta--wrapper {
+    text-align: left;
+  }
+  .product form.shopify-product-form .uploadkit .uploadkit-button{
+    font-family: $accentFontStack;
+    font-weight: $accentFontWeight;
+    font-style: $accentFontStyle;
+  }
+  .bold_option .bold_option_title,
+  .single-option-radio__label{
+    font-family: $accentFontStack;
+    font-weight: $accentFontWeight;
+    font-style: $accentFontStyle;
+    display: block;
+    float: left;
+    margin-right: 12px;
+    color: black;
+    font-size: 18px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .product-single__add-to-cart {
+    float: left;
+    width: 75%;
+    .btn--add-to-cart {
+      margin-top: 0;
+      width: calc(75% - 20px);
+    }
+  }
+  .product-single__quantity {
+    width: 25%;
+    float: left;
+  }
+  .product-single__meta {
+    padding: 0;
+  }
+}

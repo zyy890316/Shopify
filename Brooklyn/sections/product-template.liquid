@@ -35,7 +35,7 @@
               Display current variant image
             {% endcomment %}
             <div class="product-single__photo--flex-wrapper">
-              <div class="product-single__photo--flex">
+              <div class="product-single__photo--flex main_image">
                 {% include 'image-style' with image: featured_image, width: 575, height: 850, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
                 <div id="{{ wrapper_id }}" class="product-single__photo--container">
                   <div class="product-single__photo-wrapper" style="padding-top:{{ 1 | divided_by: featured_image.aspect_ratio | times: 100}}%;">
@@ -76,7 +76,7 @@
                 {% capture wrapper_id %}ProductImageWrapper-{{ image.id }}{% endcapture %}
 
                 <div class="product-single__photo--flex-wrapper">
-                  <div class="product-single__photo--flex">
+                  <div class="product-single__photo--flex main_image">
                     {% include 'image-style' with image: image, width: 575, height: 850, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
                     <div id="{{ wrapper_id }}" class="product-single__photo--container">
                       <div class="product-single__photo-wrapper" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
@@ -125,7 +125,7 @@
               Display current variant image
             {% endcomment %}
             <div class="product-single__photo--flex-wrapper">
-              <div class="product-single__photo--flex">
+              <div class="product-single__photo--flex main_image">
                 {% include 'image-style' with image: featured_image, width: 575, height: 850, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
                 <div id="{{ wrapper_id }}" class="product-single__photo--container product-single__photo--container-thumb">
                   <div class="product-single__photo-wrapper" style="padding-top:{{ 1 | divided_by: featured_image.aspect_ratio | times: 100}}%;">
@@ -166,7 +166,7 @@
                 {% capture wrapper_id %}ProductImageWrapper-{{ image.id }}{% endcapture %}
 
                 <div class="product-single__photo--flex-wrapper">
-                  <div class="product-single__photo--flex">
+                  <div class="product-single__photo--flex main_image">
                     {% include 'image-style' with image: image, width: 575, height: 850, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
                     <div id="{{ wrapper_id }}" class="product-single__photo--container product-single__photo--container-thumb hide">
                       <div class="product-single__photo-wrapper" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
@@ -314,13 +314,6 @@
 
               <div class="bold_options" data-product-id="{{ product.id }}"></div>
 
-              {% if section.settings.quantity_enabled %}
-              <div class="product-single__quantity">
-                <label for="Quantity" class="product-single__quantity-label js-quantity-selector">{{ 'products.product.quantity' | t }}</label>
-                <input type="number" hidden="hidden" id="Quantity" name="quantity" value="1" min="1" class="js-quantity-selector">
-              </div>
-              {% endif %}
-
               <div class="product-single__add-to-cart{% if section.settings.add_to_cart_button_size == 'large' %} product-single__add-to-cart--full-width{% endif %}">
                 <button type="submit" name="add" id="AddToCart--{{ section.id }}" class="btn btn--add-to-cart{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}"{% unless current_variant.available %} disabled="disabled"{% endunless %}>
                   <span class="btn__text">
@@ -335,6 +328,16 @@
                   {{ form | payment_button }}
                 {% endif %}
               </div>
+
+              {% if section.settings.quantity_enabled %}
+                <div class="product-single__quantity">
+                  {% comment %}
+                  no need to show "Quantity" label
+                  <label for="Quantity" class="product-single__quantity-label js-quantity-selector">{{ 'products.product.quantity' | t }}</label>
+                  {% endcomment %}
+                  <input type="number" hidden="hidden" id="Quantity" name="quantity" value="1" min="1" class="js-quantity-selector">
+                </div>
+              {% endif %}
             {% endform %}
 
           </div>
