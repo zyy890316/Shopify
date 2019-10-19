@@ -21,6 +21,7 @@
     content="{{ variant.price | divided_by: 100.00 }}"
     {% unless variant.available %}aria-hidden="true"{% endunless %}>
     {{ variant.price | money }}
+    <span class="extra-price"></span>
   </span>
 
   <div class="product-single__unit">

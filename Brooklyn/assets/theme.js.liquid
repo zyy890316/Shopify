@@ -703,7 +703,7 @@ ShopifyAPI.addItemFromForm = function(form, callback, errorCallback) {
   var params = {
     type: 'POST',
     url: '/cart/add.js',
-    
+
 // BOLD: POv2 ROBO Installer START
 data: window.FormData ? new FormData(jQuery(form)[0]) : jQuery(form).serialize(), contentType : false, processData : false,
 // BOLD: POv2 ROBO Installer END
@@ -1060,7 +1060,7 @@ if(typeof window.BOLD !== 'undefined'
     $cartContainer.append(template(data));
 
     cartCallback(cart);
-  
+
 if (window.BOLD && BOLD.common && BOLD.common.eventEmitter && typeof BOLD.common.eventEmitter.emit === 'function'){
   BOLD.common.eventEmitter.emit('BOLD_COMMON_cart_loaded');
 }
@@ -2597,8 +2597,10 @@ theme.Product = (function() {
         }
 
         $(this.selectors.productPrice, this.$container)
-          .html(theme.Currency.formatMoney(variant.price, moneyFormat))
+          .html(theme.Currency.formatMoney(variant.price, moneyFormat) + "<span class='extra-price'></span>")
           .show();
+        $(this.selectors.productPrice, this.$container)
+          .attr("content", variant.price/100.00);
 
         // Also update and show the product's compare price if necessary
         if (variant.compare_at_price > variant.price) {
