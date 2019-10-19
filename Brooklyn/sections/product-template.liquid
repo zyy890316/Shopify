@@ -273,7 +273,7 @@
                             {% if option.selected_value == value %} checked="checked"{% endif %}
                             {% unless variant_label_state %} disabled="disabled"{% endunless %}
                             value="{{ value | escape }}"
-                            data-index="option{{ option_index }}"
+                            data-index="option{{ option_index }}"bold
                             name="option{{ option.position }}"
                             class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
                             id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
@@ -307,6 +307,10 @@
                   {% endif %}
                 {% endfor %}
               </select>
+
+              <div class="uploadkit"></div>
+
+              <div class="bold_options" data-product-id="{{ product.id }}"></div>
 
               {% if section.settings.quantity_enabled %}
               <div class="product-single__quantity">
