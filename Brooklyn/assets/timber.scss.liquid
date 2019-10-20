@@ -3323,6 +3323,7 @@ $socialIconFontStack: 'icons';
   }
   .product-single__meta--wrapper {
     text-align: left;
+    padding: 0;
   }
   .product form.shopify-product-form .uploadkit .uploadkit-button{
     font-family: $accentFontStack;
@@ -3368,5 +3369,40 @@ $socialIconFontStack: 'icons';
   }
   .product-single__description {
     margin-top: 20px;
+  }
+}
+
+.card {
+  border: 1px solid $colorBtnSecondaryAccentHover;
+}
+
+.with-nav-tabs{
+  border: 1px solid $colorBtnSecondaryAccentHover;
+  .panel-heading {
+    text-align: center;
+  }
+  .nav-tabs {
+    margin: 0;
+    border-bottom: 1px solid $colorBtnSecondaryAccentHover;
+  }
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-link:focus,
+  .nav-tabs .nav-link:hover {
+    border-color: $colorBtnSecondaryAccentHover $colorBtnSecondaryAccentHover #fff
+  }
+  .nav-item {
+    padding: 0 5px;
+  }
+  .tab-content {
+    text-align: center;
+    .card {
+      border: 0;
+    }
+    .card-img-top {
+      height: 120px;
+      width: auto;
+      margin: 0 auto;
+    }
   }
 }
