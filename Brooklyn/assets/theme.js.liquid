@@ -1241,7 +1241,7 @@ if (window.BOLD && BOLD.common && BOLD.common.eventEmitter && typeof BOLD.common
   };
 
   module = {
-    init: init,
+    init: init, cartUpdateCallback: (typeof cartUpdateCallback !== 'undefined' ? cartUpdateCallback : null),
     load: loadCart
   };
 
@@ -2144,7 +2144,7 @@ var slickTheme = (function(module, $) {
   };
 
   module = {
-    init: init,
+    init: init, cartUpdateCallback: (typeof cartUpdateCallback !== 'undefined' ? cartUpdateCallback : null),
     onInit: onInit,
     beforeChange: beforeChange,
     afterChange: afterChange

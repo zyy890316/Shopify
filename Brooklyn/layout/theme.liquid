@@ -65,6 +65,7 @@
 
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
+{% include 'globo.alsobought.script' %}
 {%- include 'bold-options-hybrid' -%}
 {%- include 'bold-common' -%}
 {%- include 'bold-product' with product, hide_action: 'header' -%}
@@ -120,6 +121,7 @@
         <div class="wrapper">
       {% endunless %}
         {{ content_for_layout }}
+{% include 'globo.alsobought.action' %}
       {% unless request.page_type == "index" %}
         </div>
       {% endunless %}
