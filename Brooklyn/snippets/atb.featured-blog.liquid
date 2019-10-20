@@ -1,0 +1,219 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": "Blog posts",
+  "id": "featured-blog",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "class": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_title",
+      "label": "Heading",
+      "default": "Blog",
+      "info": ""
+    },
+    {
+      "id": "atb_blog",
+      "type": "blog",
+      "label": "Blog",
+      "info": ""
+    },
+    {
+      "type": "range",
+      "id": "atb_post_limit",
+      "label": "Posts",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3,
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_blog_show_date",
+      "label": "Show date",
+      "default": true,
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_blog_show_author",
+      "label": "Show author",
+      "default": false,
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_blog_show_image",
+      "label": "Show cover image",
+      "default": false,
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_blog_show_excerpt",
+      "label": "Show excerpt",
+      "default": true,
+      "info": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_show_view_all",
+      "label": "Show 'View all' button",
+      "default": false,
+      "info": ""
+    }
+  ],
+  "warnings": []
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_title' %}
+{% assign atb_title = val %}
+{% include 'atb-render' field:'atb_blog' %}
+{% assign atb_blog = val %}
+{% include 'atb-render' field:'atb_post_limit' %}
+{% assign atb_post_limit = val %}
+{% include 'atb-render' field:'atb_blog_show_date' %}
+{% assign atb_blog_show_date = val %}
+{% include 'atb-render' field:'atb_blog_show_author' %}
+{% assign atb_blog_show_author = val %}
+{% include 'atb-render' field:'atb_blog_show_image' %}
+{% assign atb_blog_show_image = val %}
+{% include 'atb-render' field:'atb_blog_show_excerpt' %}
+{% assign atb_blog_show_excerpt = val %}
+{% include 'atb-render' field:'atb_show_view_all' %}
+{% assign atb_show_view_all = val %}
+{% if atb_blog_show_date == blank %}
+{% assign atb_blog_show_date = false %}
+{% else %}
+{% assign atb_blog_show_date = true %}
+{% endif %}
+{% if atb_blog_show_author == blank %}
+{% assign atb_blog_show_author = false %}
+{% else %}
+{% assign atb_blog_show_author = true %}
+{% endif %}
+{% if atb_blog_show_image == blank %}
+{% assign atb_blog_show_image = false %}
+{% else %}
+{% assign atb_blog_show_image = true %}
+{% endif %}
+{% if atb_blog_show_excerpt == blank %}
+{% assign atb_blog_show_excerpt = false %}
+{% else %}
+{% assign atb_blog_show_excerpt = true %}
+{% endif %}
+{% if atb_show_view_all == blank %}
+{% assign atb_show_view_all = false %}
+{% else %}
+{% assign atb_show_view_all = true %}
+{% endif %}
+{% assign atb_post_limit = atb_post_limit | plus: 0 %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section ">
+<div class="featured-blog featured-blog--{{ section_id }}" data-section-id="{{ section_id }}">
+  <div class="wrapper">
+
+    {%- assign blog = blogs[atb_blog] -%}
+
+    {% case atb_post_limit %}
+      {% when 3 %}
+        {%- assign width = 'small--one-whole medium--one-half large--one-third' -%}
+      {% when 2 %}
+        {%- assign width = 'small--one-whole medium--one-half large--one-half' -%}
+      {% when 1 %}
+        {% if atb_blog_show_image %}
+          {%- assign width = 'small--one-whole medium--one-half large--one-half' -%}
+        {% else %}
+          {%- assign width = 'text-center large--four-fifths push--large--one-tenth' -%}
+        {% endif %}
+      {% else %}
+        {%- assign width = 'small--one-whole medium--one-half large--one-third' -%}
+    {% endcase %}
+
+    {% if atb_title != blank %}
+      <div class="section-header text-center">
+        <h2 class="h1 section-header__title">{{ atb_title | escape }}</h2>
+        <hr class="hr--small">
+      </div>
+    {% endif %}
+
+    {% unless blog.articles_count == 0 %}
+      <div class="grid-uniform">
+        {% for article in blog.articles limit: atb_post_limit %}
+          <div class="grid__item {{ width }}">
+            <div class="featured-blog__post">
+
+              {% if atb_blog_show_image %}
+                {% unless article.image == blank %}
+                  <a class="article__featured-image-link" href="{{ article.url }}">
+                    <noscript>
+                      {{ article.image | img_url: '1024x1024' | img_tag: article.title | escape }}
+                    </noscript>
+                    <div class="article__featured-image-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                      {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                      <img class="article__featured-image lazyload"
+                        src="{{ article.image | img_url: '300x300' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[310, 360, 480, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                        data-aspectratio="{{ article.image.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ article.title | escape }}">
+                    </div>
+                  </a>
+                {% endunless %}
+              {% endif %}
+
+              {% unless atb_post_limit == 1 and atb_blog_show_image %}
+                {% include 'featured-blog', article: article %}
+              {% endunless %}
+
+            </div>
+          </div>
+
+          {% if atb_post_limit == 1 and atb_blog_show_image %}
+            <div class="grid__item {{ width }}">
+              <div class="featured-blog__post">
+                 {% include 'featured-blog', article: article %}
+              </div>
+            </div>
+          {% endif %}
+
+        {% endfor %}
+      </div>
+
+    {% else %}
+      {% include 'onboarding-featured-blog' %}
+    {% endunless %}
+
+    {% if blog == empty %}
+      {% include 'onboarding-featured-blog' %}
+    {% endif %}
+
+    {% if atb_show_view_all %}
+      <div class="section-header text-center">
+        <a href="{{ blog.url }}" class="btn">
+          {{ 'blogs.article.view_all' | t }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+
+</section>

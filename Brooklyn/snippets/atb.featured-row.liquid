@@ -1,0 +1,140 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": "Image with text",
+  "id": "featured-row",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "class": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "image_picker",
+      "id": "atb_image",
+      "label": "Image",
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "atb_layout",
+      "label": "Image alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_title",
+      "label": "Heading",
+      "default": "Image with text",
+      "info": ""
+    },
+    {
+      "type": "html",
+      "id": "atb_text",
+      "label": "Text",
+      "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_button_label",
+      "label": "Button label",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_button_link",
+      "label": "Button link",
+      "info": ""
+    }
+  ],
+  "warnings": []
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_image' %}
+{% assign atb_image = val %}
+{% include 'atb-render' field:'atb_layout' %}
+{% assign atb_layout = val %}
+{% include 'atb-render' field:'atb_title' %}
+{% assign atb_title = val %}
+{% include 'atb-render' field:'atb_text' %}
+{% assign atb_text = val %}
+{% include 'atb-render' field:'atb_button_label' %}
+{% assign atb_button_label = val %}
+{% include 'atb-render' field:'atb_button_link' %}
+{% assign atb_button_link = val %}
+{% assign atb_image_key = atb_image| split: '/files/' | last %}{% assign atb_image = images[atb_image_key] %}
+<section id="shopify-section-{{section_id}}" class="shopify-section ">
+<div class="wrapper">
+  <div class="page-width feature-row">
+    {% capture image_layout %}
+      <div class="feature-row__item">
+        {% if atb_image != blank %}
+          <noscript>
+            {{ atb_image | img_url: '600x600' | img_tag: atb_image.alt, 'feature-row__image-no-js' }}
+          </noscript>
+          <div class="feature-row__image-wrapper" style="padding-top:{{ 1 | divided_by: atb_image.aspect_ratio | times: 100}}%;">
+            {% assign img_url = atb_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img class="feature-row__image lazyload"
+              src="{{ atb_image | img_url: '300x300' }}"
+              data-src="{{ img_url }}"
+              data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+              data-aspectratio="{{ atb_image.aspect_ratio }}"
+              data-sizes="auto"
+              alt="{{ atb_image.alt | escape }}">
+        </div>
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    {% endcapture %}
+
+    <div class="feature-row">
+      {% if atb_layout == 'left' %}
+        {{ image_layout }}
+      {% endif %}
+
+      <div class="feature-row__item feature-row__text feature-row__text--{{ atb_layout }}">
+        {% if atb_title != blank %}
+          <h2 class="h3">{{ atb_title | escape }}</h2>
+        {% endif %}
+        {% if atb_text != blank %}
+          <div class="rte-setting featured-row__subtext">{{ atb_text }}</div>
+        {% endif %}
+        {% if atb_button_label != blank and atb_button_link != blank %}
+          <a href="{{ atb_button_link }}" class="btn">
+            {{ atb_button_label | escape }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if atb_layout == 'right' %}
+        {{ image_layout }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+</section>

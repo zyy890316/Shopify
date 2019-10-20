@@ -1,0 +1,102 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": "Rich text",
+  "class": "index-section rich-text-section",
+  "id": "featured-content",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "atb_home_page_full_width",
+      "label": "Wide display",
+      "info": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_section_title",
+      "label": "Heading",
+      "default": "Talk about your brand",
+      "info": ""
+    },
+    {
+      "type": "html",
+      "id": "atb_text",
+      "label": "Text",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "atb_text_size",
+      "label": "Size",
+      "default": "medium",
+      "options": [
+        {
+          "label": "Small",
+          "value": "small"
+        },
+        {
+          "label": "Medium",
+          "value": "medium"
+        },
+        {
+          "label": "Large",
+          "value": "large"
+        }
+      ],
+      "info": ""
+    }
+  ],
+  "warnings": []
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_home_page_full_width' %}
+{% assign atb_home_page_full_width = val %}
+{% include 'atb-render' field:'atb_section_title' %}
+{% assign atb_section_title = val %}
+{% include 'atb-render' field:'atb_text' %}
+{% assign atb_text = val %}
+{% include 'atb-render' field:'atb_text_size' %}
+{% assign atb_text_size = val %}
+{% if atb_home_page_full_width == blank %}
+{% assign atb_home_page_full_width = false %}
+{% else %}
+{% assign atb_home_page_full_width = true %}
+{% endif %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section index-section rich-text-section">
+<div data-section-id="{{ section_id }}" data-section-type="featured-content-section">
+  <div class="rich-text wrapper">
+    <div class="grid">
+      <div class="grid__item text-center{% unless atb_home_page_full_width %} large--two-thirds medium--two-thirds push--large--one-sixth push--medium--one-sixth{% endunless %}">
+        {% if atb_section_title != blank %}
+          <div class="section-header">
+            <h2 class="rich-text__heading--{{ atb_text_size }} section-header__title h1">{{ atb_section_title | escape }}</h2>
+          </div>
+        {% endif %}
+        {% if atb_text != blank %}
+          <div class="rte rich-text__text--{{ atb_text_size }}">
+            {{ atb_text }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>

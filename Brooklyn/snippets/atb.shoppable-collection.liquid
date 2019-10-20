@@ -1,0 +1,109 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": "Shoppable Collection",
+  "max_blocks": 9,
+  "id": "shoppable-collection",
+  "banner":"//i.imgur.com/3xH5C0o.png",
+  "icon":"//i.imgur.com/JBPe0Qi.png",
+  "tags":"image,button,brooklyn",
+  "description":"list of collections",
+  "class": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_title",
+      "label": "Heading",
+      "default": "Shop",
+      "info": ""
+    },
+    {
+      "id": "atb_collection",
+      "type": "collection",
+      "label": "Collection",
+      "info": ""
+    }
+  ]
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_title' %}
+{% assign atb_title = val %}
+{% include 'atb-render' field:'atb_collection' %}
+{% assign atb_collection = val %}
+{% assign collection = collections[atb_collection] %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section ">
+<div class="wrapper">
+  {% if atb_title != blank %}
+    <div class="section-header text-center">
+      <h2 class="h1 section-header__title">{{ atb_title | escape }}</h2>
+      <hr class="hr--small">
+    </div>
+  {% endif %}
+
+{% if section.settings.collection_products_grid == 'collage' %}
+  <div class="grid grid-collage" id="bc-sf-filter-products">
+    {% comment %}
+      Loop through our products in the current collection.
+      See the snippet 'snippets/product-grid-collage.liquid'.
+
+      `is_reverse_row__product`, `three_row_index__product`, `collection_product_count`, and `divisible_by_three__product` are
+      all used by 'snippets/product-grid-collage.liquid'
+    {% endcomment %}
+    {% assign is_reverse_row__product = false %}
+    {% assign three_row_index__product = 0 %}
+    {% assign collection_product_count__product = collection.products.size %}
+    {% assign divisible_by_three__product = collection_product_count__product | modulo:3 %}
+    {% for product in collection.products %}
+      {% include 'product-grid-collage' %}
+    {% else %}
+
+      {% if shop.products_count == 0 %}
+        {% comment %}
+          Add default products to help with onboarding for collections/all only
+        {% endcomment %}
+        {% include 'onboarding-featured-products' %}
+      {% else %}
+        {% comment %}
+          If collection exists but is empty, display message
+        {% endcomment %}
+        <div class="grid__item text-center">
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="grid-uniform" id="bc-sf-filter-products">
+    {% assign grid_item_width = 'medium--one-half large--one-third' %}
+    {% for product in collection.products %}
+      {% include 'product-grid-item' %}
+    {% else %}
+      {% if collection.handle == 'all' %}
+        {% comment %}
+          Add default products to help with onboarding for collections/all only
+        {% endcomment %}
+        {% include 'onboarding-featured-products' %}
+      {% else %}
+        {% comment %}
+          If collection exists but is empty, display message
+        {% endcomment %}
+        <div class="grid__item text-center">
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+</div>
+</section>

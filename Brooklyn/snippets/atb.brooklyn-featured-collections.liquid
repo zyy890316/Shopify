@@ -1,0 +1,110 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": "Brooklyn Collection list",
+  "max_blocks": 9,
+  "id": "brooklyn-featured-collections",
+  "banner":"//i.imgur.com/3xH5C0o.png",
+  "icon":"//i.imgur.com/JBPe0Qi.png",
+  "tags":"image,button,brooklyn",
+  "description":"list of collections",
+  "class": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_title",
+      "label": "Heading",
+      "default": "Collection list",
+      "info": ""
+    },
+    {
+      "id": "atb_collection",
+      "type": "collection",
+      "label": "Collection",
+      "repeatable": "Collection",
+      "info": ""
+    }
+  ]
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_title' %}
+{% assign atb_title = val %}
+{% include 'atb-render' field:'atb_collection' %}
+{% assign atb_collection = val %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section ">
+<div class="wrapper">
+  {% if atb_title != blank %}
+    <div class="section-header text-center">
+      <h2 class="h1 section-header__title">{{ atb_title | escape }}</h2>
+      <hr class="hr--small">
+    </div>
+  {% endif %}
+
+  <div class="grid collection-grid">
+
+    {% comment %}
+      Show up to 9 collections.
+      Frontpage will be excluded if collections defined automatically.
+    {% endcomment %}
+    {% assign isEmpty = true %}
+    {% assign collection_index = 0 %}
+    {% assign collection_count = 0 %}
+    {% assign collection_limit = atb_collection.size %}
+
+    {% comment %}
+      Add one to the collection limit to offset chance of Frontpage being included
+    {% endcomment %}
+    {% assign collection_limit = collection_limit | plus: 1 %}
+
+    {% comment %}
+      Calculate number of collections to show, making sure Frontpage isn't one
+    {% endcomment %}
+    {% for collection in atb_collection limit: collection_limit %}
+        {% assign collection_count = collection_count | plus: 1 %}
+    {% endfor %}
+
+    {% if collection_count > 0 %}
+      {% assign isEmpty = false %}
+    {% endif %}
+
+    {% assign divisible_by_three = collection_count | modulo: 3 %}
+    {% assign divisible_by_two = collection_count | modulo: 2 %}
+
+    {% comment %}
+      Loop through the collections to display
+    {% endcomment %}
+    {% for atb_collection0 in atb_collection limit: collection_limit %}
+        {% assign collection = collections[atb_collection[forloop.index0]] %}
+        {% assign collection_index = collection_index | plus: 1 %}
+        {% assign collection_handle = collection.handle %}
+        {% include 'collection-grid-collage' %}
+    {% endfor %}
+
+    {% if isEmpty %}
+      <div class="wrapper">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="rte text-center">
+              {{ 'home_page.onboarding.no_content' | t }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+
+</section>

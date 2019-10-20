@@ -1,0 +1,117 @@
+{% comment %}
+  ATB-SCHEMA{
+  "name": "Brooklyn Image with text",
+  "id": "brooklyn-featured-row",
+  "banner": "//i.imgur.com/AooID5E.png",
+  "icon": "//i.imgur.com/p5V0jO0.png",
+  "tags": "",
+  "description": "",
+  "settings":[
+    {
+      "type": "image",
+      "id": "image",
+      "info": "",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "info": "",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Image on left"
+        },
+        {
+          "value": "right",
+          "label": "Image on right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "info": "",
+      "default": "Image with text"
+    },
+    {
+      "type": "html",
+      "id": "text",
+      "label": "Text",
+      "info": "",
+      "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "info": "",
+      "label": "Button label"
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "info": "",
+      "label": "Button link"
+    }
+  ]
+}ATB-SCHEMA
+{% endcomment %}
+
+{% include 'atb-render' field:'image' %}
+{% assign image = val %}
+{% include 'atb-render' field:'layout' %}
+{% assign layout = val %}
+{% include 'atb-render' field:'title' %}
+{% assign title = val %}
+{% include 'atb-render' field:'text' %}
+{% assign text = val %}
+{% include 'atb-render' field:'button_label' %}
+{% assign button_label = val %}
+{% include 'atb-render' field:'button_link' %}
+{% assign button_link = val %}
+
+<div class="shopify-section atb-section">
+  <div class="wrapper">
+    <div class="page-width feature-row">
+      {% capture image_layout %}
+        <div class="feature-row__item">
+          {% if image != blank %}
+            <image src="{{image}}" class="feature-row__image"/>
+            {% comment %}
+              {{ image | img_url: '600x600' | img_tag: image.alt, 'feature-row__image' }}
+            {% endcomment %}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+      {% endcapture %}
+
+      <div class="feature-row">
+        {% if layout == 'left' %}
+          {{ image_layout }}
+        {% endif %}
+
+        <div class="feature-row__item feature-row__text feature-row__text--{{ layout }}">
+          {% if title != blank %}
+            <h2 class="h3">{{ title | escape }}</h2>
+          {% endif %}
+          {% if text != blank %}
+            <div class="rte-setting featured-row__subtext">{{ text }}</div>
+          {% endif %}
+          {% if button_label != blank and button_link != blank %}
+            <a href="{{ button_link }}" class="btn">
+              {{ button_label }}
+            </a>
+          {% endif %}
+        </div>
+
+        {% if layout == 'right' %}
+          {{ image_layout }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,222 @@
+    <!-- Section / Block Type: Text -->
+
+    {% comment %}
+  ATB-SCHEMA{
+   "name":"Brooklyn Slideshow",
+   "id":"brooklyn-slideshow",
+   "price":0,
+   "banner":"//i.imgur.com/3xH5C0o.png",
+   "icon":"//i.imgur.com/JBPe0Qi.png",
+   "screenshots":[
+      "//i.imgur.com/OcChZrR.png",
+      "//i.imgur.com/OcChZrR.png",
+      "//i.imgur.com/OcChZrR.png"
+   ],
+   "tags":"slider,image,button,brooklyn",
+   "description":"A Custom Slider",
+   "settings":[
+      {
+         "type":"select",
+         "id":"home_hero_auto_speed",
+         "label":"Slide changes every",
+         "options":[
+            {
+               "value":"5000",
+               "label":"5 seconds"
+            },
+            {
+               "value":"7000",
+               "label":"7 seconds"
+            },
+            {
+               "value":"10000",
+               "label":"10 seconds"
+            }
+         ]
+      },
+      {
+         "type":"image",
+         "id":"image",
+         "label":"Image",
+         "info": "",
+         "repeatable":"Slide"
+      },
+      {
+         "type":"select",
+         "id":"slide_text_color",
+         "label":"Text color",
+         "info": "",
+         "default":"is-dark",
+         "options":[
+            {
+               "value":"is-light",
+               "label":"Light"
+            },
+            {
+               "value":"is-dark",
+               "label":"Dark"
+            }
+         ]
+      },
+      {
+         "type":"select",
+         "id":"hero_full_height",
+         "label":"Full Height Slides",
+         "info": "",
+         "default":"1",
+         "options":[
+            {
+               "value":"1",
+               "label":"Yes"
+            },
+            {
+               "value":"",
+               "label":"No"
+            }
+         ]
+      },
+      {
+         "type":"select",
+         "id":"hero_parallax",
+         "label":"Parallax",
+         "info": "",
+         "default":"1",
+         "repeatable":"Slide",
+         "options":[
+            {
+               "value":"1",
+               "label":"Yes"
+            },
+            {
+               "value":"",
+               "label":"No"
+            }
+         ]
+      },
+      {
+         "type":"text",
+         "id":"slide_subheading",
+         "label":"Subheading text",
+         "info": "",
+         "default":"An introductory",
+         "repeatable":"Slide"
+      },
+      {
+         "type":"text",
+         "id":"slide_heading",
+         "label":"Heading text",
+         "info": "",
+         "default":"Hero Banner",
+         "repeatable":"Slide"
+      },
+      {
+         "type":"text",
+         "id":"slide_cta",
+         "label":"Button text",
+         "info": "",
+         "default":"Shop now",
+         "repeatable":"Slide"
+      },
+      {
+         "type":"text",
+         "id":"slide_link",
+         "label":"Slide link",
+         "info": "",
+         "repeatable":"Slide"
+      }
+   ]
+}ATB-SCHEMA
+    {% endcomment %}
+
+    {% include 'atb-render' field:'home_hero_auto_speed' %}
+    {% assign home_hero_auto_speed = val %}
+
+    {% include 'atb-render' field:'image' %}
+    {% assign image = val %}
+
+    {% include 'atb-render' field:'slide_text_color' %}
+    {% assign slide_text_color = val %}
+
+    {% include 'atb-render' field:'slide_subheading' %}
+    {% assign slide_subheading = val %}
+
+    {% include 'atb-render' field:'slide_heading' %}
+    {% assign slide_heading = val %}
+
+    {% include 'atb-render' field:'slide_cta' %}
+    {% assign slide_cta = val %}
+
+    {% include 'atb-render' field:'slide_link' %}
+    {% assign slide_link = val %}
+
+    {% include 'atb-render' field:'slide_mode' %}
+    {% assign slide_mode = val %}
+
+
+    <div data-section-id="hero-slideshow" data-section-type="slideshow-section">
+      <div class="hero-slideshow hero{% if hero_full_height != blank %} hero--full-height{% endif %} hero--first" id="Hero"{% if hero_full_height != blank %} data-fullscreen="true"{% endif %}{% if hero_parallax != blank %}data-parallax="true"{% endif %} data-autoplay="true" data-autoplayspeed="{{ home_hero_auto_speed }}">
+       
+        {% for img in image %}
+       
+        <div class="hero__slide {{ final_color[forloop.index0] }} slide--{{ forloop.index }}{% if image == blank %} slide--placeholder{% endif %}" data-color="{{ slide_text_color[forloop.index0] }}" {{ block.shopify_attributes }}>
+          {% if hero_full_height != blank %}
+          {% comment %}
+          Full-screen styles use CSS background images
+          {% endcomment %}
+
+          <style>
+            @media screen and (max-width: 1024px) and (max-height: 768px)  {
+              .hero__image--1 {
+                background-image: url('{{ img }}');
+                  }
+            }
+            @media screen and (min-width: 1025px), screen and (min-height: 769px) {
+              .hero__image--1 {
+                background-image: url('{{ img }}');
+                  }
+            }
+          </style>
+          <div class="hero__image hero__image--1" data-image="{{ img }}"></div>
+          {% else %}
+          {% if img != blank %}
+          <div class="hero__image">
+            <img src="{{ img }}" alt="{{ final_heading[forloop.index0] }}">
+          </div>
+          {% else %}
+          <div class="hero__image">
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+          {% endif %}
+          {% endif %}
+
+          <div class="hero__text-wrap">
+            <div class="hero__text-align">
+              <div class="hero__text-content">
+                {% unless slide_subheading[forloop.index0] == blank %}
+                <p class="hero__subtitle">
+                  {{ slide_subheading[forloop.index0] }}
+                </p>
+                {% endunless %}
+                {% unless slide_heading[forloop.index0] == blank %}
+                <h2 class="h1 hero__title">
+                  {{ slide_heading[forloop.index0] }}
+                </h2>
+                {% endunless %}
+                {% unless slide_cta[forloop.index0] == blank %}
+                <a href="{{ slide_link[forloop.index0] }}" class="btn hero__cta">
+                  {{ slide_cta[forloop.index0] }} <span class="icon icon-arrow-right" aria-hidden="true"></span>
+                </a>
+                {% endunless %}
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        {% endfor %}
+      </div>
+
+    </div>
+
+
+

@@ -1,0 +1,89 @@
+{% comment %}
+ATB-SCHEMA{
+  "name": "Video",
+  "id": "featured-video",
+  "banner": "",
+  "icon": "",
+  "tags": "",
+  "description": "",
+  "class": "",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Enter a unique ID with only letters and numbers, no spaces",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "atb_heading",
+      "label": "Heading",
+      "default": "Video",
+      "info": ""
+    },
+    {
+      "type": "select",
+      "id": "atb_video_url_type",
+      "label": "Video link Type",
+      "default": "youtube",
+      "options": [
+        {
+          "value": "youtube",
+          "label": "Youtube"
+        },
+        {
+          "value": "vimeo",
+          "label": "Vimeo"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "atb_video_url_id",
+      "label": "YouTube or Vimeo ID",
+      "default": "_9VUPq3SxOc"
+    }
+  ],
+  "warnings": []
+}ATB-SCHEMA
+{% endcomment %}
+
+
+{% include 'atb-render' field:'section_id' %}
+{% assign section_id = val %}
+{% include 'atb-render' field:'atb_heading' %}
+{% assign atb_heading = val %}
+{% include 'atb-render' field:'atb_video_url_id' %}
+{% assign atb_video_url_id = val %}
+{% include 'atb-render' field:'atb_video_url_type' %}
+{% assign atb_video_url_type = val %}
+
+<section id="shopify-section-{{section_id}}" class="shopify-section ">
+<div class="wrapper">
+  {% if atb_heading != blank %}
+    <div class="section-header text-center">
+      <h2 class="h1 section-header__title">{{ atb_heading | escape }}</h2>
+      <hr class="hr--small">
+    </div>
+  {% endif %}
+  <div class="grid">
+    <div class="grid__item one-whole">
+      <div class="video-wrapper">
+        {% if atb_video_url_id == blank %}
+          <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          {% if atb_video_url_type == "youtube" %}
+            <iframe src="//www.youtube.com/embed/{{ atb_video_url_id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+          {% if atb_video_url_type == "vimeo" %}
+            <iframe src="//player.vimeo.com/video/{{ atb_video_url_id }}?color={{ settings.color_secondary | remove: "#" }}&byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>
