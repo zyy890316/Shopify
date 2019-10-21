@@ -1,14 +1,20 @@
 <div class="card with-nav-tabs">
    <div class="panel-heading">
       <ul class="nav nav-tabs row no-gutters">
-         <li class="nav-item col">
-           <a class="nav-link active" href="#tab1default" data-toggle="tab">How It <br> Works?</a>
+         <li class="nav-item col-4">
+           <a class="nav-link active" href="#tab1default" data-toggle="tab">
+             <h6>How It<br>Works?</h6>
+          </a>
          </li>
-         <li class="nav-item col">
-           <a class="nav-link" href="#tab2default" data-toggle="tab">Background Selection</a>
+         <li class="nav-item col-4">
+           <a class="nav-link" href="#tab2default" data-toggle="tab">
+             <h6>Background<br>Selection</h6>
+          </a>
          </li>
-         <li class="nav-item col">
-           <a class="nav-link" href="#tab3default" data-toggle="tab">Wag and Purr Promise</a>
+         <li class="nav-item col-4">
+           <a class="nav-link" href="#tab3default" data-toggle="tab">
+             <h6>Wag and Purr Promise</h6>
+           </a>
          </li>
       </ul>
    </div>
@@ -49,7 +55,13 @@
            Default 2
          </div>
          <div class="tab-pane fade" id="tab3default">
-           Default 3
+           <div class="card">
+             <img src={{ 'Dog_5_HiRes.png' | asset_url }} class="card-img-top" alt="100% Satisfaction Guarantee">
+             <div class="card-body">
+               <h5 class="card-title">100% Satisfaction Guarantee.</h5>
+               <p class="card-text">If you aren’t 100% happy (wagging and purring) with your PetCanva purchase, we’ll work with you to make it right. Happy PetParents make happy pets. (It’s simple math). Smile. Wag. Purr. ‘nuff said.</p>
+             </div>
+           </div>
          </div>
       </div>
    </div>
