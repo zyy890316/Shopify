@@ -1,0 +1,107 @@
+{% assign fields = "artStyles,funnys,foods,colors" | split: "," %}
+{% assign artStyles = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
+{% assign funnys = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
+{% assign foods = "Avacado___Toast,Bright_Oranges,Burger_Joint,Cones,Cupcakes,Donut_Frenzy" | split: "," %}
+{% assign colors = "Aquamarine,Black,Blue,Burgundy" | split: "," %}
+
+<div class="accordion" id="accordionExample">
+  {% for field in fields %}
+    {% if field == "artStyles" %}
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h6 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Art Styles
+            </button>
+          </h6>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body owl-carousel owl-theme">
+            {% for artStyle in artStyles %}
+              <img src={{ artStyle | append: ".png" | asset_url }} class="card-img-top" alt={{ artStyle }}>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if field == "funnys" %}
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h6 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+              Funny Backgrounds
+            </button>
+          </h6>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body owl-carousel owl-theme">
+            {% for funny in funnys %}
+              <img src={{ funny | append: ".png" | asset_url }} class="card-img-top" alt={{ funny }}>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if field == "foods" %}
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h6 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                Food Backgrounds
+            </button>
+          </h6>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body owl-carousel owl-theme">
+            {% for food in foods %}
+              <img src={{ food | append: ".png" | asset_url }} class="card-img-top" alt={{ food }}>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if field == "colors" %}
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h6 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+              Pure Color Backgrounds
+            </button>
+          </h6>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+          <div class="card-body owl-carousel owl-theme">
+            {% for color in colors %}
+              <img src={{ color | append: ".png" | asset_url }} class="card-img-top" alt={{ color }}>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+      center: true,
+      autoHeight:true,
+      dots:true,
+      dotsEach:true,
+      loop:true,
+      margin:10,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+            items:2
+        }
+      }
+    });
+  });
+</script>
