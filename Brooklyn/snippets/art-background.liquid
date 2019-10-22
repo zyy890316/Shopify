@@ -2,15 +2,17 @@
 {% assign artStyles = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
 {% assign funnys = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
 {% assign foods = "Avacado___Toast,Bright_Oranges,Burger_Joint,Cones,Cupcakes,Donut_Frenzy" | split: "," %}
-{% assign colors = "Aquamarine,Black,Blue,Burgundy" | split: "," %}
+{% assign colors = "Aquamarine,Black,Blue,Burgundy,Coral,Dark_Blue,Forest_Green,Fruit_Orange,Green_Grass,Lake_Blue,Lavender_Rose,Light_Blue,Light_Green,Light_Pink,Light_Purple,Light_Red,Light_Yellow,Lime_Green,Orange,Pink,Purple,Red,Rose_Gold,Sky_Blue,Sunset_Yellow,Turquoise,Yellow" | split: "," %}
 
 <div class="accordion" id="accordionExample">
+  <h6>4 Art Styles, 80+ backgrounds, just for you!</h6>
+  <p>We have tons of background options to showcase your furbaby just the way you want! Choose your art style and then pick a background!</p>
   {% for field in fields %}
     {% if field == "artStyles" %}
       <div class="card">
         <div class="card-header" id="headingOne">
           <h6 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
               Art Styles
             </button>
           </h6>
@@ -29,7 +31,7 @@
       <div class="card">
         <div class="card-header" id="headingTwo">
           <h6 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
               Funny Backgrounds
             </button>
           </h6>
@@ -48,7 +50,7 @@
       <div class="card">
         <div class="card-header" id="headingThree">
           <h6 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
                 Food Backgrounds
             </button>
           </h6>
@@ -67,7 +69,7 @@
       <div class="card">
         <div class="card-header" id="headingFour">
           <h6 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
               Pure Color Backgrounds
             </button>
           </h6>
@@ -98,7 +100,7 @@
         0:{
           items:1
         },
-        600:{
+        400:{
             items:2
         }
       }
