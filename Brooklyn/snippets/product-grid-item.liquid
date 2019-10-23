@@ -81,7 +81,6 @@
       <span class="grid-product__title">{{ product.title }}</span>
 <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
       <span class="grid-product__price-wrap">
-        <span class="long-dash">—</span>
         <span class="grid-product__price">
           {% if on_sale %}
             <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>

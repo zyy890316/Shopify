@@ -16,7 +16,7 @@
 
     <div class="row product-single">
 			<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-      	{% include 'product-images', product: product %}
+      	{% include 'product-image-carousel', product: product %}
 		  </div>
 			<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
       	{% include 'product-buybox', product: product %}
@@ -38,7 +38,7 @@
 
 		<!-- Icon section -->
 		<div class="row card-deck icon-box text-center">
-			<div class="col-md-4 col-xs-12">
+			<div class="col-sm-4 col-xs-12">
 				<div class="card">
 					<img src={{ 'shipment_major_monotone.svg' | asset_url }} class="card-img-top" alt="Fast Shipment">
 					<div class="card-body">
@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 col-xs-12">
+			<div class="col-sm-4 col-xs-12">
 				<div class="card">
 					<img src={{ 'gift-card_major_twotone.svg' | asset_url }} class="card-img-top" alt="The perfect gift">
 					<div class="card-body">
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 col-xs-12">
+			<div class="col-sm-4 col-xs-12">
 				<div class="card">
 					<img src={{ 'smiley-joy_major_twotone.svg' | asset_url }} class="card-img-top" alt="Happy Pet Parents Gurantted!">
 					<div class="card-body">
@@ -71,6 +71,7 @@
   </script>
 {% endunless %}
 
+<div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
 
 
 {% schema %}
@@ -523,7 +524,3 @@
   ]
 }
 {% endschema %}
-
-
-	<div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
-  

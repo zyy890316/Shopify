@@ -78,9 +78,8 @@
     <a href="{{ product.url | within: collection }}" class="grid-product__meta">
       <span class="grid-product__title">{{ product.title }}</span>
       {% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true %}
-      
+
       <span class="grid-product__price-wrap">
-        <span class="long-dash">—</span>
         <span class="grid-product__price">
           {% if on_sale %}
             <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
