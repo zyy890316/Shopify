@@ -1,7 +1,7 @@
 <!-- /templates/index.liquid -->
 
 <!-- Homepage Featured Products -->
-<div class="container product-collections">
+<div class="container-fluid product-collections">
   <div class="row collection-title">
     <h4 class="section-title section-title-center">
       <b></b>
@@ -57,7 +57,7 @@
 
 <!-- Homepage Art Style -->
 {% assign artStyles = "WaterColor,WaterColor,WaterColor,WaterColor" | split: "," %}
-<div class="container art-container">
+<div class="container-fluid art-container">
   <div class="row collection-title">
     <h4 class="section-title section-title-center">
       <b></b>
@@ -70,8 +70,8 @@
     {% for artStyle in artStyles %}
       {% case artStyle %}
       {% when 'WaterColor' %}
-         {% assign title = "Water Color" %}
-         {% assign text = "Water Color Best for Pupies!" %}
+         {% assign title = "Watercolor" %}
+         {% assign text = "Watercolor Best for Pupies!" %}
       {% when 'OilPaint' %}
         {% assign title = "Oil Paint" %}
         {% assign text = "Oil Paint Best for Pupies!" %}
@@ -93,12 +93,13 @@
       </div>
     {% endfor %}
   </div>
+  <a href="/collections/all" class="mb-4 btn btn-grad btn-lg" role="button" aria-pressed="true">Shop Now</a>
 </div>
 <script>
-    lightbox.option({
-      'alwaysShowNavOnTouchDevices': true,
-      'wrapAround': true
-    })
+lightbox.option({
+  'alwaysShowNavOnTouchDevices': true,
+  'wrapAround': true
+})
 </script>
 <!-- Homepage Art Style End -->
 
