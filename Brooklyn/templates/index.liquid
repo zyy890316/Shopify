@@ -1,5 +1,96 @@
 <!-- /templates/index.liquid -->
 
+<!-- Homepage Featured Products -->
+<div class="container product-collections">
+  <div class="row collection-title">
+    <h4 class="section-title section-title-center">
+      <b></b>
+      <span class="section-title-main">Best-selling Pawducts</span>
+      <b></b>
+    </h4>
+  </div>
+  <div class="row">
+    {% for collection in collections %}
+      {% if collection.title contains 'Home'%}
+        {% for product in collection.products %}
+          {% if forloop.index <= 4 %}
+            <!--show product card here -->
+            {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            {% assign on_sale = false %}
+            {% if product.compare_at_price > product.price %}
+              {% assign on_sale = true %}
+            {% endif %}
+            <div class="card-col col-md-3 col-sm-6 col-6" >
+              <div class="card">
+                <a class="grid-product__image-link" href="{{ product.url | within: collection }}" data-image-link>
+                  <img class="card-img-top img-fluid lazyload"
+                       data-src="{{ img_url }}"
+                       data-widths="[180, 370, 590, 740, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                       data-sizes="auto"
+                       alt="{{ product.featured_image.alt | escape }}"
+                       data-image>
+                </a>
+                {% if on_sale %}
+                  <div class="grid-product__on-sale">
+                    {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}{% endcapture %}
+                    <p>{{ 'products.general.save_html' | t: saved_amount: saved_amount }}</p>
+                  </div>
+                {% endif %}
+
+                <div class="card-body">
+                  <h6 class="card-title">{{ product.title }}</h6>
+                  <span>{% include 'product-price', variant: product.selected_or_first_available_variant %}</span>
+                  <a href="#looxReviews"><div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}" style="margin-bottom:15px"></div></a>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<!-- Homepage Featured Products End -->
+
+<!-- Homepage Art Style -->
+{% assign artStyles = "WaterColor,WaterColor,WaterColor,WaterColor" | split: "," %}
+<div class="container art-container">
+  <div class="row collection-title">
+    <h4 class="section-title section-title-center">
+      <b></b>
+      <span class="section-title-main">4 Unique Art Styles!</span>
+      <b></b>
+    </h4>
+  </div>
+  <div class="row">
+    {% for artStyle in artStyles %}
+      {% case artStyle %}
+      {% when 'WaterColor' %}
+         {% assign title = "Water Color" %}
+         {% assign text = "Water Color Best for Pupies!" %}
+      {% when 'OilPaint' %}
+        {% assign title = "Oil Paint" %}
+        {% assign text = "Oil Paint Best for Pupies!" %}
+      {% when 'Carton' %}
+        {% assign title = "Carton" %}
+        {% assign text = "Carton Best for Pupies!" %}
+      {% else %}
+        {% assign title = "Classic" %}
+        {% assign text = "Classic Best for Pupies!" %}
+      {% endcase %}
+      <div class="card-col col-md-3 col-sm-6 col-6" >
+        <img src={{ artStyle | append: ".png" | asset_url }} class="card-img-top" alt={{ artStyle }}>
+        <div class="card-body">
+          <h6 class="card-title">{{ title }}</h6>
+          <span class="card-subtitle mb-2 text-mute">{{ text }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- Homepage Art Style End -->
+
 <div class="index-sections">
   {{ content_for_index }}
 </div>

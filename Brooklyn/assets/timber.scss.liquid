@@ -3282,7 +3282,10 @@ $socialIconFontStack: 'icons';
   display: block;
 }
 
-// Product section
+// Product page buybox section
+.product-single {
+  margin-top: 20px;
+}
 #shopify-section-product-template{
   .product-single__title {
     margin-bottom: 5px;
@@ -3450,10 +3453,12 @@ $socialIconFontStack: 'icons';
 
 @media (max-width: 576px) {
     h6{font-size: 14px !important;}
+    h4{font-size: 14px !important;}
 }
 
 @media (max-width: 786px) {
     h6{font-size: 16px !important;}
+    h4{font-size: 16px !important;}
 }
 
 //Grident Buttons
@@ -3480,4 +3485,82 @@ $socialIconFontStack: 'icons';
     display: block;
     width: 100% !important;
     height: auto !important;
+}
+
+
+// Homepage
+.main-content {
+  padding-top: 0 !important;
+}
+.product-collections,
+.art-container {
+  max-width: 100%;
+  .section-title {
+    position: relative;
+    -js-display: flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+  }
+  .section-title b {
+    display: block;
+    -ms-flex: 1;
+    flex: 1;
+    height: 2px;
+    opacity: .1;
+    background-color: currentColor;
+  }
+  .section-title-center span, .section-title-bold-center span {
+    text-align: center;
+  }
+  .section-title-center span {
+      margin: 0 15px;
+  }
+  .section-title span {
+      text-transform: uppercase;
+  }
+  .product-single__price.on-sale {
+    color: $colorTextBody;
+    font-size: em(14px);
+  }
+  .product-single__price--compare-at {
+    color: #999999;
+    font-size: em(12px);
+    font-style: italic;
+  }
+  .card {
+    border: 0;
+  }
+  .card-body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.art-container{
+  text-align: center;
+  margin-bottom: 20px;
+  background-image: url('{{ "Bluewebsitebackground-1" | append: ".png" | asset_url }}');
+  .section-title {
+    margin-top: 20px;
+    color: white;
+  }
+}
+
+// On sale badge
+.grid-product__on-sale {
+  border-radius: 999px;
+  background-color: $colorSecondary;
+  border: 0 !important;
+  p {
+    color: white;
+  }
 }

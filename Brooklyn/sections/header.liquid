@@ -8,7 +8,37 @@
       max-width: 100%;
     }
   }
+  .sticky-top.btn-grad {
+    padding: 0;
+    z-index: 9;
+  }
+  .navbar-brand {
+    margin: 0;
+  }
+  .navbar-brand h6 {
+    margin: 0;
+  }
+  @media screen and (max-width: 576px) {
+    .navbar-brand  h6 {
+      font-size: 12px !important;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .navbar-brand  h6 {
+      font-size: 10px !important;
+    }
+  }
 </style>
+
+<nav class="navbar sticky-top navbar-light bg-light btn-grad">
+  <a class="navbar-brand text-center w-100" href="/collections">
+    {%- if cart.total_price > 0 and cart.total_price < 6000 -%}
+      <h6>🎉You are only {{ 6000 | minus: cart.total_price | money }} away from free Shipping!🎉</h6>
+    {%- else -%}
+      <h6>🎉Free Shipping for Order Over $60 in US!🎉</h6>
+    {%- endif -%}
+  </a>
+</nav>
 
 <div data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ request.page_type }}">
   <div id="NavDrawer" class="drawer drawer--left">
