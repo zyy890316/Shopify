@@ -3555,6 +3555,11 @@ $socialIconFontStack: 'icons';
   }
 }
 
+//lightbox
+.lb-nav a.lb-prev{width:34%;left:0;float:left;background:url('{{ "lightbox-prev" | append: ".png" | asset_url }}') left 48% no-repeat;filter:alpha(Opacity=0);opacity:0;-webkit-transition:opacity .6s;-moz-transition:opacity .6s;-o-transition:opacity .6s;transition:opacity .6s}
+.lb-nav a.lb-prev:hover{filter:alpha(Opacity=100);opacity:1}.lb-nav a.lb-next{width:64%;right:0;float:right;background:url('{{ "lightbox-next" | append: ".png" | asset_url }}') right 48% no-repeat;filter:alpha(Opacity=0);opacity:0;-webkit-transition:opacity .6s;-moz-transition:opacity .6s;-o-transition:opacity .6s;transition:opacity .6s}
+.lb-data .lb-close{display:block;float:right;width:30px;height:30px;background:url('{{ "lightbox-close" | append: ".png" | asset_url }}') top right no-repeat;text-align:right;outline:0;filter:alpha(Opacity=70);opacity:.7;-webkit-transition:opacity .2s;-moz-transition:opacity .2s;-o-transition:opacity .2s;transition:opacity .2s}
+
 // On sale badge
 .grid-product__on-sale {
   border-radius: 999px;

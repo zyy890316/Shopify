@@ -3,10 +3,10 @@
     "color_body_bg": "#ffffff",
     "color_headings": "#222323",
     "color_body_text": "#222323",
-    "color_borders": "#5ec6dc",
+    "color_borders": "#47a6ea",
     "color_button_text": "#ffffff",
-    "color_primary": "#5ec6dc",
-    "color_secondary": "#a26b25",
+    "color_primary": "#47a6ea",
+    "color_secondary": "#47a6ea",
     "color_product_background": "#f7f7f7",
     "color_sale_tag": "#990000",
     "color_input": "#f6f6f6",
@@ -14,20 +14,20 @@
     "color_drawer_background": "#1c1d1d",
     "color_drawer_text": "#ffffff",
     "color_drawer_border": "#343535",
-    "color_drawer_button": "#a26b25",
+    "color_drawer_button": "#47a6ea",
     "color_drawer_button_text": "#ffffff",
     "type_header_family": "avenir_next_n7",
     "type_header_base_size": "30px",
-    "type_header_border_thickness": "3px",
+    "type_header_border_thickness": "1px",
     "type_accent_family": "avenir_next_rounded_n6",
     "type_accent_transform": true,
     "type_accent_spacing": true,
     "type_accent_subheadings": true,
-    "type_base_family": "avenir_next_n4",
+    "type_base_family": "avenir_next_rounded_n4",
     "type_base_size": "16px",
     "type_base_italize_titles": true,
     "cart_type": "drawer",
-    "cart_notes_enable": false,
+    "cart_notes_enable": true,
     "share_image": "",
     "social_facebook_link": "",
     "social_twitter_link": "",
@@ -42,7 +42,7 @@
     "share_facebook": true,
     "share_twitter": true,
     "share_pinterest": true,
-    "favicon": "shopify:\/\/shop_images\/logo_60a5f505-12b5-4097-acae-55f2c2070913.png",
+    "favicon": "shopify:\/\/shop_images\/favicon_618827cb-b492-46a4-baf3-be931b7dac0d.png",
     "flits_tracking_active_color": "#1201fe",
     "flits_tracking_completed_color": "#2d8700",
     "flits_tracking_remain_color": "#dddddd",
@@ -83,7 +83,7 @@
           "1495823280244": {
             "type": "slide",
             "settings": {
-              "image": "shopify:\/\/shop_images\/banner3.jpg",
+              "image": "shopify:\/\/shop_images\/banner_copy.png",
               "image_position": "center center",
               "image_overlay": true,
               "image_overlay_opacity": 8,
@@ -107,25 +107,17 @@
           "home_hero_auto_speed": 5
         }
       },
-      "featured-products": {
-        "type": "featured-products",
-        "settings": {
-          "title": "Featured collection",
-          "home_featured_products": "frontpage",
-          "collection_products_grid": "collage"
-        }
-      },
       "newsletter": {
         "type": "newsletter",
         "settings": {
-          "heading": "Subscribe to our newsletter",
-          "subheading": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+          "heading": "GET AN ADDITIONAL 20% OFF YOUR ENTIRE PURRCHASE",
+          "subheading": "<p>Sign up right now to receive your discount code!<\/p>"
         }
       },
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/logo_1831e102-e210-4712-b307-2b61e93c7211.png",
+          "logo": "shopify:\/\/shop_images\/logo_text.png",
           "logo-inverted": "",
           "logo_max_width": "60-",
           "search": "modal",
@@ -192,40 +184,6 @@
           "add_to_cart_button_size": "small"
         }
       },
-      "1496078102297": {
-        "type": "advanced-content",
-        "blocks": {
-          "1496078102297-0": {
-            "type": "html",
-            "settings": {
-              "code": "<div style=\"text-align:center;\">\n<h1 class=\"h1\">Use HTML to format your text so it can be easily read.<\/h1>This text can be used to share information about your brand with customers.<\/div>",
-              "width": "100%",
-              "alignment": "top-middle"
-            }
-          }
-        },
-        "block_order": [
-          "1496078102297-0"
-        ],
-        "settings": {}
-      },
-      "1496177901425": {
-        "type": "advanced-content",
-        "blocks": {
-          "1496177901425-0": {
-            "type": "html",
-            "settings": {
-              "code": "<div style=\"width:745px;text-align: center; margin: 0 auto;\">This text can be used to share information about your brand with customers.<\/div>",
-              "width": "100%",
-              "alignment": "top-middle"
-            }
-          }
-        },
-        "block_order": [
-          "1496177901425-0"
-        ],
-        "settings": {}
-      },
       "1571461231513": {
         "type": "loox-all-reviews",
         "settings": {
@@ -245,9 +203,6 @@
       }
     },
     "content_for_index": [
-      "1496177901425",
-      "featured-products",
-      "1496078102297",
       "1494860348200",
       "1494894035034",
       "1571461231513",

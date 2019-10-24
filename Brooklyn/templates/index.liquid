@@ -39,8 +39,10 @@
                 {% endif %}
 
                 <div class="card-body">
-                  <h6 class="card-title">{{ product.title }}</h6>
-                  <span>{% include 'product-price', variant: product.selected_or_first_available_variant %}</span>
+                  <a href="{{ product.url | within: collection }}">
+                    <h6 class="card-title">{{ product.title }}</h6>
+                    <span>{% include 'product-price', variant: product.selected_or_first_available_variant %}</span>
+                  </a>
                   <a href="#looxReviews"><div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}" style="margin-bottom:15px"></div></a>
                 </div>
               </div>
@@ -63,6 +65,7 @@
       <b></b>
     </h4>
   </div>
+  <!-- <h6>💡Pro tip: Click on image to see a larger version and the art style details.💡</h6> -->
   <div class="row">
     {% for artStyle in artStyles %}
       {% case artStyle %}
@@ -80,7 +83,9 @@
         {% assign text = "Classic Best for Pupies!" %}
       {% endcase %}
       <div class="card-col col-md-3 col-sm-6 col-6" >
-        <img src={{ artStyle | append: ".png" | asset_url }} class="card-img-top" alt={{ artStyle }}>
+        <a href="{{ artStyle | append: ".png" | asset_url }}" data-lightbox="artStyles" data-title="{{ text }}">
+          <img src={{ artStyle | append: ".png" | asset_url }} class="card-img-top rounded border" alt={{ artStyle }}>
+        </a>
         <div class="card-body">
           <h6 class="card-title">{{ title }}</h6>
           <span class="card-subtitle mb-2 text-mute">{{ text }}</span>
@@ -89,6 +94,12 @@
     {% endfor %}
   </div>
 </div>
+<script>
+    lightbox.option({
+      'alwaysShowNavOnTouchDevices': true,
+      'wrapAround': true
+    })
+</script>
 <!-- Homepage Art Style End -->
 
 <div class="index-sections">
