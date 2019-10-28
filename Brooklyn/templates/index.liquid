@@ -1,7 +1,29 @@
 <!-- /templates/index.liquid -->
 
+<!-- Homepage Hero Banner -->
+<!--
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100 lazyload fade-in" src="{{ "banner_try.png" | asset_img_url: '300x' }}" alt="First slide"
+      data-src="{{ "banner_try.png" | asset_url }}"
+      data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
+      data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+      data-sizes="auto"
+      data-parent-fit="cover"
+      alt="{{ block.settings.image.alt | escape }}">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>This is a title</h5>
+        <p>Just some text</p>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<!-- Homepage Hero Banner End -->
+
 <!-- Homepage Featured Products -->
-<div class="container-fluid product-collections">
+<div class="container-fluid product-collections" id="products">
   <div class="row collection-title">
     <h4 class="section-title section-title-center">
       <b></b>
@@ -15,7 +37,7 @@
         {% for product in collection.products %}
           {% if forloop.index <= 4 %}
             <!--show product card here -->
-            {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            {%- assign image = product.featured_image -%}
             {% assign on_sale = false %}
             {% if product.compare_at_price > product.price %}
               {% assign on_sale = true %}
@@ -24,7 +46,8 @@
               <div class="card">
                 <a class="grid-product__image-link" href="{{ product.url | within: collection }}" data-image-link>
                   <img class="card-img-top img-fluid lazyload"
-                       data-src="{{ img_url }}"
+                       src="{{ image | img_url: '300x300' }}"
+                       data-src="{{ image| img_url: '1200x1200' }}"
                        data-widths="[180, 370, 590, 740, 900, 1080, 1296, 1512, 1728, 2048]"
                        data-aspectratio="{{ product.featured_image.aspect_ratio }}"
                        data-sizes="auto"
@@ -56,7 +79,7 @@
 <!-- Homepage Featured Products End -->
 
 <!-- Homepage Art Style -->
-{% assign artStyles = "WaterColor,WaterColor,WaterColor,WaterColor" | split: "," %}
+{% assign artStyles = "OilPaint,Classic,WPAP,PolyArt,WaterColor" | split: "," %}
 <div class="container-fluid art-container">
   <div class="row collection-title">
     <h4 class="section-title section-title-center">
@@ -69,22 +92,34 @@
   <div class="row">
     {% for artStyle in artStyles %}
       {% case artStyle %}
-      {% when 'WaterColor' %}
-         {% assign title = "Watercolor" %}
-         {% assign text = "Watercolor Best for Pupies!" %}
       {% when 'OilPaint' %}
-        {% assign title = "Oil Paint" %}
-        {% assign text = "Oil Paint Best for Pupies!" %}
-      {% when 'Carton' %}
-        {% assign title = "Carton" %}
-        {% assign text = "Carton Best for Pupies!" %}
-      {% else %}
+         {% assign title = "OilPaint" %}
+         {% assign text = "OilPaint Best for Pupies!" %}
+      {% when 'Classic' %}
         {% assign title = "Classic" %}
         {% assign text = "Classic Best for Pupies!" %}
+      {% when 'WPAP' %}
+        {% assign title = "WPAP" %}
+        {% assign text = "WPAP Best for Pupies!" %}
+      {% else %}
+      {% when 'PolyArt' %}
+        {% assign title = "PolyArt" %}
+        {% assign text = "PolyArt Best for Pupies!" %}
+      {% when 'WaterColor' %}
+        {% assign title = "WaterColor" %}
+        {% assign text = "WaterColor Best for Pupies!" %}
+      {% else %}
+        {% assign title = "PolyArt" %}
+        {% assign text = "PolyArt Best for Pupies!" %}
       {% endcase %}
       <div class="card-col col-md-3 col-sm-6 col-6" >
-        <a href="{{ artStyle | append: ".png" | asset_url }}" data-lightbox="artStyles" data-title="{{ text }}">
-          <img src={{ artStyle | append: ".png" | asset_url }} class="card-img-top rounded border" alt={{ artStyle }}>
+        <a href="{{ artStyle | append: ".png" | asset_img_url: '1000x' }}" data-lightbox="artStyles" data-title="{{ text }}">
+          <img src="{{ artStyle | append: ".png" | asset_img_url: '300x' }}" class="card-img-top rounded border lazyload fade-in"
+          alt="{{ artStyle }}"
+          data-src="{{ artStyle | append: ".png" | asset_img_url: '1000x' }}"
+          data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
+          data-sizes="auto"
+          data-parent-fit="cover">
         </a>
         <div class="card-body">
           <h6 class="card-title">{{ title }}</h6>

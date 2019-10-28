@@ -27,16 +27,33 @@
 }
 </style>
 
-<div id="carousel-thumb" data-touch="true" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
-  <div class="carousel-inner">
+<div id="carousel-thumb" data-interval="false" data-touch="true" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+  <div class="carousel-inner d-flex flex-wrap align-items-center">
     {% for image in product.images %}
+      {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
       {% if forloop.first == true %}
-      <div class="item carousel-item active" data-slide-number="{{ forloop.index0 }}">
-        <img src="{{ image.src | img_url: 'compact' }}" class="img-fluid" alt="{{ image.alt | escape }}">
+      <div class="item carousel-item active d-flex flex-wrap align-items-center" data-slide-number="{{ forloop.index0 }}">
+        <img class="img-fluid lazyload d-block w-100"
+          src="{{ image.src | img_url: 'compact' }}"
+          data-src="{{ image | img_url: 'master' }}"
+          data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+          data-aspectratio="{{ image.aspect_ratio }}"
+          data-sizes="auto"
+          {% if section.settings.zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %}
+          data-image-id="{{ image.id }}"
+          alt="{{ image.alt | escape }}">
       </div>
       {% else %}
-      <div class="item carousel-item" data-slide-number="{{ forloop.index0 }}">
-        <img src="{{ image.src | img_url: 'compact' }}" class="img-fluid" alt="{{ image.alt | escape }}">
+      <div class="item carousel-item d-flex flex-wrap align-items-center" data-slide-number="{{ forloop.index0 }}">
+        <img class="img-fluid lazyload d-block w-100"
+          src="{{ image.src | img_url: 'compact' }}"
+          data-src="{{ image | img_url: 'master' }}"
+          data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+          data-aspectratio="{{ image.aspect_ratio }}"
+          data-sizes="auto"
+          {% if section.settings.zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %}
+          data-image-id="{{ image.id }}"
+          alt="{{ image.alt | escape }}">
       </div>
       {% endif %}
     {% endfor %}
@@ -82,4 +99,35 @@ $(".carousel").on("touchstart", function(event){
             $(this).off("touchmove");
     });
 });
+
+function carouselNormalization() {
+  var items = $('#carousel-thumb .item'), //grab all slides
+    heights = [], //create empty array to store height values
+    tallest; //create variable to make note of the tallest slide
+
+  if (items.length) {
+    function normalizeHeights() {
+      items.each(function() { //add heights to array
+        heights.push($(this).height());
+      });
+      tallest = Math.max.apply(null, heights); //cache largest value
+      items.each(function() {
+        $(this).css('min-height', tallest + 'px');
+      });
+    };
+    normalizeHeights();
+
+    $(window).on('resize orientationchange', function() {
+      tallest = 0, heights.length = 0; //reset vars
+      items.each(function() {
+        $(this).css('min-height', '0'); //reset min-height
+      });
+      normalizeHeights(); //run it again
+    });
+  }
+}
+
+window.onload = function() {
+  carouselNormalization();
+}
 </script>

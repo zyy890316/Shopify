@@ -1,6 +1,6 @@
-{% assign fields = "artStyles,funnys,foods,colors" | split: "," %}
+{% assign fields = "artStyles,texts,patterns,foods,colors" | split: "," %}
 {% assign artStyles = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
-{% assign funnys = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
+{% assign texts = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
 {% assign foods = "Avacado___Toast,Bright_Oranges,Burger_Joint,Cones,Cupcakes,Donut_Frenzy" | split: "," %}
 {% assign colors = "Aquamarine,Black,Blue,Burgundy,Coral,Dark_Blue,Forest_Green,Fruit_Orange,Green_Grass,Lake_Blue,Lavender_Rose,Light_Blue,Light_Green,Light_Pink,Light_Purple,Light_Red,Light_Yellow,Lime_Green,Orange,Pink,Purple,Red,Rose_Gold,Sky_Blue,Sunset_Yellow,Turquoise,Yellow" | split: "," %}
 
@@ -10,36 +10,55 @@
   {% for field in fields %}
     {% if field == "artStyles" %}
       <div class="card">
-        <div class="card-header" id="headingOne">
+        <div class="card-header" id="headingArt">
           <h6 class="mb-0">
-            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseArt" aria-expanded="true" aria-controls="collapseArt">
               Art Styles
             </button>
           </h6>
         </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div id="collapseArt" class="collapse show" aria-labelledby="headingArt" data-parent="#accordionExample">
           <div class="card-body owl-carousel owl-theme">
             {% for artStyle in artStyles %}
-              <img src={{ artStyle | append: ".png" | asset_url }} class="card-img-top" alt={{ artStyle }}>
+              <img src={{ artStyle | append: ".png" | asset_img_url: '600x' }} class="card-img-top" alt={{ artStyle }}>
             {% endfor %}
           </div>
         </div>
       </div>
     {% endif %}
 
-    {% if field == "funnys" %}
+    {% if field == "texts" %}
       <div class="card">
-        <div class="card-header" id="headingTwo">
+        <div class="card-header" id="headingText">
           <h6 class="mb-0">
-            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-              Funny Backgrounds
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseText" aria-expanded="true" aria-controls="collapseOne">
+              Popular Texts
             </button>
           </h6>
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div id="collapseText" class="collapse" aria-labelledby="headingText" data-parent="#accordionExample">
           <div class="card-body owl-carousel owl-theme">
-            {% for funny in funnys %}
-              <img src={{ funny | append: ".png" | asset_url }} class="card-img-top" alt={{ funny }}>
+            {% for text in texts %}
+              <img src={{ text | append: ".png" | asset_img_url: '600x' }} class="card-img-top" alt={{ funny }}>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if field == "patterns" %}
+      <div class="card">
+        <div class="card-header" id="headingPattern">
+          <h6 class="mb-0">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapsePattern" aria-expanded="true" aria-controls="collapseOne">
+              Cute Patterns
+            </button>
+          </h6>
+        </div>
+        <div id="collapsePattern" class="collapse" aria-labelledby="headingPattern" data-parent="#accordionExample">
+          <div class="card-body owl-carousel owl-theme">
+            {% for i in (1..20) %}
+              <img src={{ "BackgroundPattern-" | append: i | append: ".jpg"  | asset_img_url: '600x' }} class="card-img-top" alt={{ "BackgroundPattern-" | append: i }}>
             {% endfor %}
           </div>
         </div>
@@ -48,17 +67,17 @@
 
     {% if field == "foods" %}
       <div class="card">
-        <div class="card-header" id="headingThree">
+        <div class="card-header" id="headingFood">
           <h6 class="mb-0">
-            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseFood" aria-expanded="true" aria-controls="collapseOne">
                 Food Backgrounds
             </button>
           </h6>
         </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div id="collapseFood" class="collapse" aria-labelledby="headingFood" data-parent="#accordionExample">
           <div class="card-body owl-carousel owl-theme">
-            {% for food in foods %}
-              <img src={{ food | append: ".png" | asset_url }} class="card-img-top" alt={{ food }}>
+            {% for i in (1..14) %}
+              <img src={{ "BackgroundFood-" | append: i | append: ".jpg"  | asset_img_url: '600x' }} class="card-img-top" alt={{ "BackgroundFood-" | append: i }}>
             {% endfor %}
           </div>
         </div>
@@ -67,17 +86,17 @@
 
     {% if field == "colors" %}
       <div class="card">
-        <div class="card-header" id="headingFour">
+        <div class="card-header" id="headingColor">
           <h6 class="mb-0">
-            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseColor" aria-expanded="true" aria-controls="collapseOne">
               Pure Color Backgrounds
             </button>
           </h6>
         </div>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+        <div id="collapseColor" class="collapse" aria-labelledby="headingColor" data-parent="#accordionExample">
           <div class="card-body owl-carousel owl-theme">
             {% for color in colors %}
-              <img src={{ color | append: ".png" | asset_url }} class="card-img-top" alt={{ color }}>
+              <img src={{ color | append: ".png" | asset_img_url: '600x' }} class="card-img-top" alt={{ color }}>
             {% endfor %}
           </div>
         </div>

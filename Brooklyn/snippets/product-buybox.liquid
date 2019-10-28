@@ -38,7 +38,7 @@
             {% form 'product', product, class:form_classes, id:form_id, data-product-form: '' %}
               {% unless product.has_only_default_variant %}
                 {% for option in product.options_with_values %}
-                  {% if option.name != 'Depth' %}
+                  {% unless option.name contains 'Hide' %}
                     <div class="radio-wrapper js product-form__item">
                       <label class="single-option-radio__label"
                         for="ProductSelect-option-{{ forloop.index0 }}">
@@ -74,7 +74,7 @@
                         </select>
                       {% endif %}
                     </div>
-                  {% endif %}
+                  {% endunless %}
                 {% endfor %}
               {% endunless %}
 
