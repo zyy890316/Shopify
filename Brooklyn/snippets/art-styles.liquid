@@ -1,0 +1,59 @@
+<!-- Homepage Art Style -->
+{% assign artStyles = "OilPaint,Classic,WPAP,PolyArt,WaterColor" | split: "," %}
+<div class="container-fluid art-container">
+  <div class="row collection-title">
+    <h4 class="section-title section-title-center">
+      <b></b>
+      <span class="section-title-main">4 Unique Art Styles!</span>
+      <b></b>
+    </h4>
+  </div>
+  <!-- <h6>💡Pro tip: Click on image to see a larger version and the art style details.💡</h6> -->
+  <div class="row">
+    {% for artStyle in artStyles %}
+      {% case artStyle %}
+      {% when 'OilPaint' %}
+         {% assign title = "OilPaint" %}
+         {% assign text = "OilPaint Best for Pupies!" %}
+      {% when 'Classic' %}
+        {% assign title = "Classic" %}
+        {% assign text = "Classic Best for Pupies!" %}
+      {% when 'WPAP' %}
+        {% assign title = "WPAP" %}
+        {% assign text = "WPAP Best for Pupies!" %}
+      {% else %}
+      {% when 'PolyArt' %}
+        {% assign title = "PolyArt" %}
+        {% assign text = "PolyArt Best for Pupies!" %}
+      {% when 'WaterColor' %}
+        {% assign title = "WaterColor" %}
+        {% assign text = "WaterColor Best for Pupies!" %}
+      {% else %}
+        {% assign title = "PolyArt" %}
+        {% assign text = "PolyArt Best for Pupies!" %}
+      {% endcase %}
+      <div class="card-col col-md-3 col-sm-6 col-6" >
+        <a href="{{ artStyle | append: ".png" | asset_img_url: '1000x' }}" data-lightbox="artStyles" data-title="{{ text }}">
+          <img src="{{ artStyle | append: ".png" | asset_img_url: '300x' }}" class="card-img-top rounded border lazyload fade-in"
+          alt="{{ artStyle }}"
+          data-src="{{ artStyle | append: ".png" | asset_img_url: '1000x' }}"
+          data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
+          data-sizes="auto"
+          data-parent-fit="cover">
+        </a>
+        <div class="card-body">
+          <h6 class="card-title">{{ title }}</h6>
+          <span class="card-subtitle mb-2 text-mute">{{ text }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <a href="/collections/all" class="mb-4 btn btn-grad btn-lg" role="button" aria-pressed="true">Shop Now</a>
+</div>
+<script>
+lightbox.option({
+  'alwaysShowNavOnTouchDevices': true,
+  'wrapAround': true
+})
+</script>
+<!-- Homepage Art Style End -->
