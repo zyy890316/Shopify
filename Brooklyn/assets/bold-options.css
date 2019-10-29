@@ -250,6 +250,10 @@ bold-options.css version 6
     vertical-align: top;
 }
 
+    .bold_swatch_selected.bold_option_value_element {
+        box-shadow:0 0 0 1px #545454;
+        border-color: #545454;
+    }
 
 .bold_option_value_swatch {
     box-sizing:border-box;
@@ -382,3 +386,18 @@ bold-options.css version 6
 
 /* custom css */
 .bold_option_value_swatch { width:64px; height:64px; }
+
+.bold_option_value:hover .bold_option_swatch_title, .bold_tooltip:hover > :first-child {
+  padding: 3px;
+  opacity: 0.95;
+}
+.bold_option_swatch_title, .bold_tooltip > :first-child {
+ width: 220px;
+}
+
+@media screen and (max-width: 400px) {
+    .bold_option_swatch_title, .bold_tooltip > :first-child {
+         width: 150px;
+    }
+  }
+
