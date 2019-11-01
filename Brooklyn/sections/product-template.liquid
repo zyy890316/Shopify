@@ -77,7 +77,6 @@
 	display: block;
 }
 .tooltipImg {
-	display: none;
 	pointer-events:none;
 	touch-action:none;
 }
@@ -85,7 +84,7 @@
 
 <script>
 $(document).ready(function() {
-	$('.bold_options').on('click', '.bold_option_value_element', function () {
+	$('.bold_options').on('click mouseover', '.bold_option_value_element', function () {
 		// remove the tooltip from previous action, so only one display ever
 		$( ".tooltipImg" ).remove();
 		var bgContainer = $(this).children()[0].children[0];

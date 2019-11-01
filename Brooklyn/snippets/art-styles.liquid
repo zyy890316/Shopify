@@ -12,12 +12,12 @@
   <div class="row">
     {% for artStyle in artStyles %}
       {% case artStyle %}
-      {% when 'OilPaint' %}
-         {% assign title = "OilPaint" %}
-         {% assign text = "OilPaint Best for Pupies!" %}
       {% when 'Classic' %}
         {% assign title = "Classic" %}
-        {% assign text = "Classic Best for Pupies!" %}
+        {% assign text = "Our best selling style, vectorize your Furbaby in a unique way with enhanced details!" %}
+      {% when 'OilPaint' %}
+         {% assign title = "Oil Paint" %}
+         {% assign text = "OilPaint Best for Pupies!" %}
       {% when 'WPAP' %}
         {% assign title = "WPAP" %}
         {% assign text = "WPAP Best for Pupies!" %}
@@ -26,8 +26,8 @@
         {% assign title = "PolyArt" %}
         {% assign text = "PolyArt Best for Pupies!" %}
       {% when 'WaterColor' %}
-        {% assign title = "WaterColor" %}
-        {% assign text = "WaterColor Best for Pupies!" %}
+        {% assign title = "Watercolor" %}
+        {% assign text = "Using Digital Watercolor will give your pet a shiny felling!" %}
       {% else %}
         {% assign title = "PolyArt" %}
         {% assign text = "PolyArt Best for Pupies!" %}
@@ -48,7 +48,7 @@
       </div>
     {% endfor %}
   </div>
-  <a href="/collections/all" class="mb-4 btn btn-grad btn-lg" role="button" aria-pressed="true">Shop Now</a>
+  <a href="/collections/all" class="mb-4 btn btn-grad btn-lg" role="button" aria-pressed="true">Customize For My Furbaby</a>
 </div>
 <script>
 lightbox.option({

@@ -62,11 +62,11 @@
     "checkout_body_background_color": "#ffffff",
     "checkout_input_background_color_mode": "white",
     "checkout_sidebar_background_image": "",
-    "checkout_sidebar_background_color": "#fff4f6",
-    "checkout_heading_font": "Helvetica Neue",
+    "checkout_sidebar_background_color": "#e2f3ff",
+    "checkout_heading_font": "Open Sans",
     "checkout_body_font": "Roboto",
-    "checkout_accent_color": "#a26b25",
-    "checkout_button_color": "#000000",
+    "checkout_accent_color": "#1675b7",
+    "checkout_button_color": "#1675b7",
     "checkout_error_color": "#f01130",
     "checkout_banner_background_color": "#fff",
     "checkout_call_to_action_color": "#a26b25",
@@ -86,12 +86,12 @@
               "image": "shopify:\/\/shop_images\/banner_copy.png",
               "image_position": "center center",
               "image_overlay": true,
-              "image_overlay_opacity": 8,
+              "image_overlay_opacity": 6,
               "text_alignment": "center",
-              "slide_heading": "Hero Banner",
-              "slide_subheading": "An introductory",
-              "button_label": "Shop now",
-              "button_link": "",
+              "slide_heading": "Custom Products Featuring Your Pet",
+              "slide_subheading": "",
+              "button_label": "Let's do it!",
+              "button_link": "#products",
               "slide_text_color": "#ffffff",
               "slide_button_label_color": "#003b34",
               "slide_button_background_color": "#84d1b2"
@@ -154,21 +154,21 @@
         "settings": {
           "image": "",
           "layout": "right",
-          "title": "Image with text",
-          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-          "button_label": "",
-          "button_link": ""
+          "title": "An UniqueExperience",
+          "text": "<p>4 Unique Art styles and 80+ background options to showcase your furbaby just the way you want. Revise your art until you are&nbsp;100% satisfied. We get your order done CRAZY FAST and keep you informed every step of the way. We wanna make you wag!<\/p>",
+          "button_label": "Let's Get Started!",
+          "button_link": "\/collections\/all"
         }
       },
       "1494894035034": {
         "type": "featured-row",
         "settings": {
-          "image": "",
+          "image": "shopify:\/\/shop_images\/group-of-coworkers-at-a-startup-wearing-t-shirts-mockup-while-at-a-meeting-a20419.png",
           "layout": "left",
-          "title": "Image with text",
-          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-          "button_label": "",
-          "button_link": ""
+          "title": "The Wag & Purr Promise",
+          "text": "<p>We work crazily hard to make sure every single portrait we draw is perfect. If you aren&rsquo;t 100% happy (wagging and purring) with your purchase, we&rsquo;ll work with you to make it right. Happy Pet Parents make happy pets. (It&rsquo;s simple math). Smile. Wag. Purr. &lsquo;nuff said.<\/p>",
+          "button_label": "Cool, I'm in!",
+          "button_link": "#products"
         }
       },
       "product-template": {
@@ -186,6 +186,7 @@
       },
       "1571461231513": {
         "type": "loox-all-reviews",
+        "disabled": true,
         "settings": {
           "only_photos": true,
           "hide_thumbnails": false,
@@ -200,11 +201,23 @@
           "show_product_recommendations": true,
           "heading": "You may also like"
         }
+      },
+      "1572410110903": {
+        "type": "featured-row",
+        "settings": {
+          "image": "",
+          "layout": "right",
+          "title": "Why is this white dog allover the place?",
+          "text": "<p>I'm the&nbsp;White Fluffy Dog <a href=\"https:\/\/www.instagram.com\/callmebb2\/\" title=\"https:\/\/www.instagram.com\/callmebb2\/\">@BB2📸<\/a> allover the page, living happily with my parents in Pacific NW. They are passionate, crazy Parents who love art almost as much as&nbsp;they love me. And they think&nbsp;all furbabies should&nbsp;have their own custom art to show off! If you&nbsp;reach here, you probably agree?&nbsp;Then are you going to make one-of-a-kind functional art for your pet?<\/p>",
+          "button_label": "Get Something for my furbaby!",
+          "button_link": "#products"
+        }
       }
     },
     "content_for_index": [
       "1494860348200",
       "1494894035034",
+      "1572410110903",
       "1571461231513",
       "newsletter"
     ]

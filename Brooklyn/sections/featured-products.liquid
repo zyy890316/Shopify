@@ -4,7 +4,9 @@
       <div class="section-header text-center">
         <h2 class="h1 section-header__title">{{ section.settings.title | escape }}</h2>
         <hr class="hr--small">
-      </div>
+      <!-- **BEGIN** Hextom USB Integration // Home Featured Product Include - DO NOT MODIFY -->
+    {% include 'hextom_usb_home_featured_prod' %}
+    <!-- **END** Hextom USB Integration // Home Featured Product Include - DO NOT MODIFY --></div>
     {% endif %}
 
     <div class="{% if section.settings.collection_products_grid == 'collage' %}grid grid-collage{% else %}grid-uniform{% endif %}">

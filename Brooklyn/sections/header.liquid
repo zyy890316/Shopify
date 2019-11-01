@@ -8,6 +8,11 @@
       max-width: 100%;
     }
   }
+
+  .site-header__logo img {
+    max-height: 60px;
+  }
+
   .sticky-top.btn-grad {
     padding: 0;
     z-index: 9;
@@ -30,13 +35,13 @@
   }
 </style>
 
-{% assign freeShipping = 6000 %}
+{% assign freeShipping = 7500 %}
 <nav class="navbar sticky-top navbar-light bg-light btn-grad">
   <a class="navbar-brand text-center w-100" href="/collections/all">
     {%- if cart.total_price > 0 and cart.total_price < freeShipping -%}
       <h6>🎉You are only {{ freeShipping | minus: cart.total_price | money_without_trailing_zeros }} away from free Shipping!🎉</h6>
     {%- else -%}
-      <h6>🎉Free Shipping for Order Over {{ freeShipping | money_without_trailing_zeros }} in US!🎉</h6>
+      <h6>🎉Free Shipping Order {{ freeShipping | money_without_trailing_zeros }}+ in US!🎉</h6>
     {%- endif -%}
   </a>
 </nav>

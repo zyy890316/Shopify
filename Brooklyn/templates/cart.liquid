@@ -56,6 +56,10 @@
                   <div class="grid__item two-thirds">
                     <a href="{{ item.url }}" class="h4 cart__product-name">
                       {{ item.product.title }}
+<!-- **BEGIN** Hextom USB Integration // Cart Include - DO NOT MODIFY -->
+    {% include 'hextom_usb_cart' %}
+    <!-- **END** Hextom USB Integration // Cart Include - DO NOT MODIFY -->
+
                     </a>
                     {% unless item.variant.title contains 'Default' %}
                       <p class="cart__product-meta">
