@@ -1,10 +1,10 @@
 <!-- Homepage Art Style -->
-{% assign artStyles = "OilPaint,Classic,WPAP,PolyArt,WaterColor" | split: "," %}
+{% assign artStyles = "Classic,PolyArt,OilPaint,WPAP,WaterColor" | split: "," %}
 <div class="container-fluid art-container">
   <div class="row collection-title">
     <h4 class="section-title section-title-center">
       <b></b>
-      <span class="section-title-main">4 Unique Art Styles!</span>
+      <span class="section-title-main">5 Unique Art Styles!</span>
       <b></b>
     </h4>
   </div>
@@ -17,17 +17,17 @@
         {% assign text = "Our best selling style, vectorize your Furbaby in a unique way with enhanced details!" %}
       {% when 'OilPaint' %}
          {% assign title = "Oil Paint" %}
-         {% assign text = "OilPaint Best for Pupies!" %}
+         {% assign text = "When it comes to capturing and conveying the unique personality traits of your furbaby, oil paint is the one to go!" %}
       {% when 'WPAP' %}
         {% assign title = "WPAP" %}
-        {% assign text = "WPAP Best for Pupies!" %}
+        {% assign text = "Want to tell the world how special your furbaby is? WPAP is the best way to feel the sensation!" %}
       {% else %}
       {% when 'PolyArt' %}
         {% assign title = "PolyArt" %}
-        {% assign text = "PolyArt Best for Pupies!" %}
+        {% assign text = "Ever imagined your pet in pixel world? Try out our PolyArt style, you'll be supprised how cute they are in minecraft!" %}
       {% when 'WaterColor' %}
         {% assign title = "Watercolor" %}
-        {% assign text = "Using Digital Watercolor will give your pet a shiny felling!" %}
+        {% assign text = "It usually take us slightl longer to give your pet this vivid look by using digital watercolor, but it worth the waiting!" %}
       {% else %}
         {% assign title = "PolyArt" %}
         {% assign text = "PolyArt Best for Pupies!" %}

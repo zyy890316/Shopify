@@ -1,7 +1,6 @@
-{% assign fields = "artStyles,texts,patterns,foods,colors" | split: "," %}
+{% assign fields = "artStyles,texts,watercolor,woodlight,patterns,foods,colors" | split: "," %}
 {% assign artStyles = "Classic,WaterColor,OilPaint,PolyArt,WPAP" | split: "," %}
 {% assign texts = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
-{% assign foods = "Avacado___Toast,Bright_Oranges,Burger_Joint,Cones,Cupcakes,Donut_Frenzy" | split: "," %}
 {% assign colors = "Aquamarine,Black,Blue,Burgundy,Coral,Dark_Blue,Forest_Green,Fruit_Orange,Green_Grass,Lake_Blue,Lavender_Rose,Light_Blue,Light_Green,Light_Pink,Light_Purple,Light_Red,Light_Yellow,Lime_Green,Orange,Pink,Purple,Red,Rose_Gold,Sky_Blue,Sunset_Yellow,Turquoise,Yellow" | split: "," %}
 
 <div class="accordion" id="accordionExample">
@@ -24,6 +23,54 @@
                 <img src={{ artStyle | append: ".png" | asset_img_url: '600x' }} class="card-img-top" alt={{ artStyle }}>
                 <div class="card-body">
                   <h6 class="card-text text-center">{{ artStyle }}</h6>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if field == "patterns" %}
+      <div class="card">
+        <div class="card-header" id="headingWatercolor">
+          <h6 class="mb-0">
+            <button class="btn btn-link dropdown-toggle w-100" type="button" data-toggle="collapse" data-target="#collapseWatercolor" aria-expanded="true" aria-controls="collapseOne">
+              Watercolor Patterns
+            </button>
+          </h6>
+        </div>
+        <div id="collapseWatercolor" class="collapse" aria-labelledby="headingWatercolor" data-parent="#accordionExample">
+          <div class="card-body owl-carousel owl-theme">
+            {% for i in (1..21) %}
+              <div class="card">
+                <img src={{ "Watercolor-" | append: i | append: ".jpg"  | asset_img_url: '600x' }} class="card-img-top" alt={{ "Watercolor-" | append: i }}>
+                <div class="card-body">
+                  <h6 class="card-text text-center">{{ "Watercolor-" | append: i | replace: '-', ' ' }}</h6>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if field == "patterns" %}
+      <div class="card">
+        <div class="card-header" id="headingWoodLight">
+          <h6 class="mb-0">
+            <button class="btn btn-link dropdown-toggle w-100" type="button" data-toggle="collapse" data-target="#collapseWoodLight" aria-expanded="true" aria-controls="collapseWoodLight">
+              WoodLight Patterns
+            </button>
+          </h6>
+        </div>
+        <div id="collapseWoodLight" class="collapse" aria-labelledby="headingWoodLight" data-parent="#accordionExample">
+          <div class="card-body owl-carousel owl-theme">
+            {% for i in (1..14) %}
+              <div class="card">
+                <img src={{ "WoodLight" | append: i | append: ".jpg"  | asset_img_url: '600x' }} class="card-img-top" alt={{ "WoodLight-" | append: i }}>
+                <div class="card-body">
+                  <h6 class="card-text text-center">{{ "WoodLight-" | append: i | replace: '-', ' ' }}</h6>
                 </div>
               </div>
             {% endfor %}
