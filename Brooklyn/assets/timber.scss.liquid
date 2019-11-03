@@ -3430,6 +3430,68 @@ $socialIconFontStack: 'icons';
   }
 }
 
+// Line Chart for description
+#shopify-section-product-template .line-chart{
+    display:block;
+    background:none
+}
+#shopify-section-product-template .line-chart .item{
+    margin-top:20px
+}
+#shopify-section-product-template .line-chart .item:first-child{
+    margin-top:0
+}
+#shopify-section-product-template .line-chart .line{
+    display:table;
+    table-layout:fixed;
+    width:100%;
+    margin-top:15px
+}
+#shopify-section-product-template .line-chart .line .step{
+    display:table-cell;
+    text-align:center;
+    border-top:solid 1px #aaa;
+    line-height:50px;
+    position:relative;
+    font-size:12px;
+    font-weight:600;
+    color:#524e4e
+}
+#shopify-section-product-template .line-chart .line .step:before{
+    content:"";
+    display:block;
+    position:absolute;
+    margin-top:-5px;
+    height:10px;
+    width:0;
+    border-left:1px solid #aaa
+}
+#shopify-section-product-template .line-chart .line .step:last-child:after{
+    content:"";
+    display:block;
+    position:relative;
+    margin-top:-5px;
+    height:10px;
+    border-left:1px solid #aaa;
+    float:right
+}
+#shopify-section-product-template .line-chart .line .step.current{
+    color:black
+}
+#shopify-section-product-template .line-chart .line .step.current:after{
+    margin-top:0 !important
+}
+#shopify-section-product-template .line-chart .line .step.current:after{
+    content:"";
+    display:block;
+    position:absolute;
+    top:-5px;
+    height:10px;
+    background-color:#aaa;
+    right:0;
+    left:1px
+}
+
 // Icon Sections
 .icon-box {
   margin: 20px;
