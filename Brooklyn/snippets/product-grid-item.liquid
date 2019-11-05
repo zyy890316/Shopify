@@ -94,7 +94,10 @@
               <span class="fallback-text">+</span>
             </span>
           {% else %}
-            {{ product.price | money_without_trailing_zeros }}
+            {% comment %}
+              {{ product.price | money_without_trailing_zeros }}
+            {% endcomment %}
+            {% include 'product-price', variant: variant %}
           {% endif %}
         </span>
 

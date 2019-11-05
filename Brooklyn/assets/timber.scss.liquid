@@ -3494,7 +3494,9 @@ $socialIconFontStack: 'icons';
 
 // Icon Sections
 .icon-box {
-  margin: 20px;
+  margin-top: 20px;
+  margin-left: 0;
+  margin-right: 0;
   background-color: rgb(246, 246, 246);
   margin-bottom: 0px;
   .card {
@@ -3503,8 +3505,11 @@ $socialIconFontStack: 'icons';
     margin-top: 20px;
   }
   .card-img-top {
-    max-width: 100px;
+    max-width: 300px;
     margin: auto;
+  }
+  @media (max-width: 400px) {
+      h6.card-title{font-size: 10px !important;}
   }
 }
 
@@ -3558,7 +3563,8 @@ $socialIconFontStack: 'icons';
   padding-top: 0 !important;
 }
 .product-collections,
-.art-container {
+.art-container,
+.product-recommendations {
   max-width: 100%;
   .section-title {
     position: relative;
@@ -3622,6 +3628,15 @@ $socialIconFontStack: 'icons';
 .featured-row__subtext a {
   color: $colorSecondary;
   font-style: italic;
+}
+#shopify-section-newsletter {
+  margin: 0;
+  .newsletter {
+    margin-top: 20px;
+  }
+}
+.icon-box .card-body {
+  padding: 0;
 }
 
 //lightbox
