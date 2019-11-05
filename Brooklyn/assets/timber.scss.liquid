@@ -3434,11 +3434,10 @@ $socialIconFontStack: 'icons';
 .product-guarantee {
   margin-top: 20px;
   margin-bottom: 20px;
-  h6 {
-    font-size: 14px;
-  }
-  p {
-    font-size: 12px;
+  @media (max-width: 576px) {
+    p {
+      font-size: 14px;
+    }
   }
   .wcst_guarantee_box_text {
     padding-left: 10px;
@@ -3535,11 +3534,13 @@ $socialIconFontStack: 'icons';
 
 @media (max-width: 576px) {
     h6{font-size: 14px !important;}
+    h5{font-size: 14px !important;}
     h4{font-size: 14px !important;}
 }
 
 @media (max-width: 786px) {
     h6{font-size: 16px !important;}
+    h5{font-size: 16px !important;}
     h4{font-size: 16px !important;}
 }
 
