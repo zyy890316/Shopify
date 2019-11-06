@@ -83,7 +83,7 @@
           "1495823280244": {
             "type": "slide",
             "settings": {
-              "image": "shopify:\/\/shop_images\/banner_copy.png",
+              "image": "shopify:\/\/shop_images\/adorable-animal-animal-photography-2008323.jpg",
               "image_position": "center center",
               "image_overlay": true,
               "image_overlay_opacity": 6,
@@ -117,7 +117,7 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/logo_text.png",
+          "logo": "shopify:\/\/shop_images\/AdLogo_973d5c69-1683-4d3a-9bac-ee8689261108.png",
           "logo-inverted": "",
           "logo_max_width": "60-",
           "search": "modal",
@@ -152,10 +152,10 @@
       "1494860348200": {
         "type": "featured-row",
         "settings": {
-          "image": "",
+          "image": "shopify:\/\/shop_images\/sample_product.jpg",
           "layout": "right",
           "title": "An UniqueExperience",
-          "text": "<p>6 Unique Art styles and 100+ background options to showcase your furbaby just the way you want. Revise your art until you are&nbsp;100% satisfied. We get your order done CRAZY FAST and keep you informed every step of the way. We wanna make you wag!<\/p>",
+          "text": "<p><strong>6 Unique Art styles<\/strong>, from abstract to realistic painting, we meet the demand of every pet lover! Plus <strong>100+ delightful backgrounds<\/strong> to showcase your furbaby just the way you want. Revise your art until you are <strong>100% satisfied<\/strong>. We get your order done <strong>CRAZY FAST<\/strong> and keep you informed every step of the way. We wanna make you wag!<\/p>",
           "button_label": "Let's Get Started!",
           "button_link": "\/collections\/all"
         }
@@ -165,8 +165,8 @@
         "settings": {
           "image": "shopify:\/\/shop_images\/group-of-coworkers-at-a-startup-wearing-t-shirts-mockup-while-at-a-meeting-a20419.png",
           "layout": "left",
-          "title": "The Wag & Purr Promise",
-          "text": "<p>We work crazily hard to make sure every single portrait we draw is perfect. If you aren&rsquo;t 100% happy (wagging and purring) with your purchase, we&rsquo;ll work with you to make it right. Happy Pet Parents make happy pets. (It&rsquo;s simple math). Smile. Wag. Purr. &lsquo;nuff said.<\/p>",
+          "title": "100% Satisfaction Guarantee",
+          "text": "<p><strong>As pet parents ourselves<\/strong>, we know how important each portrait is, that is why we work <strong>crazily hard<\/strong> to make sure every one of them is perfect. If you aren&rsquo;t <strong>100% happy<\/strong> with your purchase, we&rsquo;ll work with you to make it right. Happy Pet Parents make happy pets. (It&rsquo;s simple math). <strong>Every furbaby deserves a perfect portrait!<\/strong><\/p>",
           "button_label": "Cool, I'm in!",
           "button_link": "#products"
         }
@@ -205,10 +205,10 @@
       "1572410110903": {
         "type": "featured-row",
         "settings": {
-          "image": "",
+          "image": "shopify:\/\/shop_images\/BB2_copy.jpg",
           "layout": "right",
           "title": "Why is this white dog allover the place?",
-          "text": "<p>I'm the&nbsp;White Fluffy Dog <a href=\"https:\/\/www.instagram.com\/callmebb2\/\" title=\"https:\/\/www.instagram.com\/callmebb2\/\">@BB2📸<\/a> allover the page, living happily with my parents in Pacific NW. They are passionate, crazy Parents who love art almost as much as&nbsp;they love me. And they think&nbsp;all furbabies should&nbsp;have their own custom art to show off! If you&nbsp;reach here, you probably agree?&nbsp;Then are you going to make one-of-a-kind functional art for your pet?<\/p>",
+          "text": "<p>I'm the&nbsp;White Fluffy Dog <a href=\"https:\/\/www.instagram.com\/callmebb2\/\" title=\"https:\/\/www.instagram.com\/callmebb2\/\">@BB2📸<\/a> allover the page, living happily with my parents in <strong>Pacific NW<\/strong>. They are passionate, crazy Parents who love art almost as much as&nbsp;they love me. And they think&nbsp;<strong>all furbabies should&nbsp;have their own custom art to show off!<\/strong> If you&nbsp;reach here, you probably agree. Then are you going to make <strong>one-of-a-kind functional art<\/strong> for your baby today?<\/p>",
           "button_label": "Get Something for my furbaby!",
           "button_link": "#products"
         }
