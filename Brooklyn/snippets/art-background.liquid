@@ -1,10 +1,10 @@
 {% assign fields = "artStyles,texts,watercolor,woodlight,patterns,foods,colors" | split: "," %}
-{% assign artStyles = "Classic,WaterColor,OilPaint,PolyArt,WPAP" | split: "," %}
-{% assign texts = "Dallas,Los_Angeles,San_Antonio,Seattle" | split: "," %}
+{% assign artStyles = "Classic,PolyArt,OilPaint,WPAP,WaterColor,Carton" | split: "," %}
+{% assign texts = "PersonalStalker,Running" | split: "," %}
 {% assign colors = "Aquamarine,Black,Blue,Burgundy,Coral,Dark_Blue,Forest_Green,Fruit_Orange,Green_Grass,Lake_Blue,Lavender_Rose,Light_Blue,Light_Green,Light_Pink,Light_Purple,Light_Red,Light_Yellow,Lime_Green,Orange,Pink,Purple,Red,Rose_Gold,Sky_Blue,Sunset_Yellow,Turquoise,Yellow" | split: "," %}
 
 <div class="accordion" id="accordionExample">
-  <h6>4 Art Styles, 80+ backgrounds, just for you!</h6>
+  <h6>6 Art Styles, 100+ backgrounds, just for you!</h6>
   <p>We have tons of background options to showcase your furbaby just the way you want! Choose your art style and then pick a background!</p>
   {% for field in fields %}
     {% if field == "artStyles" %}
@@ -31,7 +31,7 @@
       </div>
     {% endif %}
 
-    {% if field == "patterns" %}
+    {% if field == "watercolor" %}
       <div class="card">
         <div class="card-header" id="headingWatercolor">
           <h6 class="mb-0">
@@ -55,7 +55,7 @@
       </div>
     {% endif %}
 
-    {% if field == "patterns" %}
+    {% if field == "woodlight" %}
       <div class="card">
         <div class="card-header" id="headingWoodLight">
           <h6 class="mb-0">
@@ -118,7 +118,7 @@
               <div class="card">
                 <img src={{ "BackgroundPattern-" | append: i | append: ".jpg"  | asset_img_url: '600x' }} class="card-img-top" alt={{ "BackgroundPattern-" | append: i }}>
                 <div class="card-body">
-                  <h6 class="card-text text-center">{{ "Cute Pattern 1" | append: i | replace: '-', ' ' }}</h6>
+                  <h6 class="card-text text-center">{{ "Cute Pattern " | append: i | replace: '-', ' ' }}</h6>
                 </div>
               </div>
             {% endfor %}

@@ -1,10 +1,10 @@
 <!-- Homepage Art Style -->
-{% assign artStyles = "Classic,PolyArt,OilPaint,WPAP,WaterColor" | split: "," %}
+{% assign artStyles = "Classic,PolyArt,OilPaint,WPAP,WaterColor,Carton" | split: "," %}
 <div class="container-fluid art-container">
   <div class="row collection-title">
     <h4 class="section-title section-title-center">
       <b></b>
-      <span class="section-title-main">5 Unique Art Styles!</span>
+      <span class="section-title-main">6 Unique Art Styles!</span>
       <b></b>
     </h4>
   </div>
@@ -24,15 +24,18 @@
       {% else %}
       {% when 'PolyArt' %}
         {% assign title = "PolyArt" %}
-        {% assign text = "Ever imagined your pet in pixel world? Try out our PolyArt style, you'll be supprised how cute they are in minecraft!" %}
+        {% assign text = "Ever imagined your pet in pixel world? Try out our PolyArt style, you'll be supprised how cute they are in Lego form!" %}
       {% when 'WaterColor' %}
         {% assign title = "Watercolor" %}
         {% assign text = "It usually take us slightl longer to give your pet this vivid look by using digital watercolor, but it worth the waiting!" %}
+      {% when 'Carton' %}
+          {% assign title = "Carton" %}
+          {% assign text = "This will be how your pets look like if they are in your favorite carton show!" %}
       {% else %}
         {% assign title = "PolyArt" %}
         {% assign text = "PolyArt Best for Pupies!" %}
       {% endcase %}
-      <div class="card-col col-md-3 col-sm-6 col-6" >
+      <div class="card-col col-lg-2 col-md-4 col-6" >
         <a href="{{ artStyle | append: ".png" | asset_img_url: '1000x' }}" data-lightbox="artStyles" data-title="{{ text }}">
           <img src="{{ artStyle | append: ".png" | asset_img_url: '300x' }}" class="card-img-top rounded border lazyload fade-in"
           alt="{{ artStyle }}"
