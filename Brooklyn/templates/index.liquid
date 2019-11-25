@@ -42,6 +42,12 @@
             {% if product.compare_at_price > product.price %}
               {% assign on_sale = true %}
             {% endif %}
+            {% assign best_seller = false %}
+            {% for tag in product.tags %}
+              {% if tag contains 'best-seller' %}
+                {% assign best_seller = true %}{% break %}
+              {% endif %}
+            {% endfor %}
             <div class="card-col col-md-3 col-sm-6 col-6" >
               <div class="card">
                 <a class="grid-product__image-link" href="{{ product.url | within: collection }}" data-image-link>
@@ -54,7 +60,11 @@
                        alt="{{ product.featured_image.alt | escape }}"
                        data-image>
                 </a>
-                {% if on_sale %}
+                {% if best_seller %}
+                  <div class="collection-badge best-seller">
+                    <span>Best seller <i class="fas fa-fire-alt" style="font-size: 1rem;"></i></span>
+                  </div>
+                {% elsif on_sale %}
                   <div class="grid-product__on-sale">
                     {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}{% endcapture %}
                     <p>{{ 'products.general.save_html' | t: saved_amount: saved_amount }}</p>

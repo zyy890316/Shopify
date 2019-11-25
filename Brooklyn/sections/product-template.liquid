@@ -75,8 +75,8 @@ $(document).ready(function() {
 	      src     : bg,
 	      'class' : 'fullImage'
 	    });
-			// If contains price, do not show picture
-			if ($this.siblings().length === 1 && $($this.siblings()[0]).find('.bold_option_value_price').length === 0) {
+			// Use this to check if  contains price $($this.siblings()[0]).find('.bold_option_value_price').length === 0
+			if ($this.siblings().length === 1) {
 				var title = $this.siblings()[0];
 				$(title).append("<div class='tooltipImg'></div>")
 		    $(title).find(".tooltipImg").html( img );
@@ -86,7 +86,9 @@ $(document).ready(function() {
 });
 </script>
 
-<div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+<div id="review">
+	<div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+</div>
 
 
 {% schema %}

@@ -3397,6 +3397,8 @@ $socialIconFontStack: 'icons';
 
 .with-nav-tabs{
   border: 1px solid $colorBtnSecondaryAccentHover;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
   .panel-heading {
     text-align: center;
   }
@@ -3427,6 +3429,12 @@ $socialIconFontStack: 'icons';
       width: auto;
       margin: 0 auto;
     }
+  }
+  h5 {
+    margin: 0;
+  }
+  .card-body {
+    padding: 0;
   }
 }
 
@@ -3577,6 +3585,27 @@ $socialIconFontStack: 'icons';
 .main-content {
   padding-top: 0 !important;
 }
+.product-collections .collection-badge,
+.grid-uniform .collection-badge {
+    letter-spacing: 1px;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: $colorSecondary;
+    display: inline-block;
+    box-shadow: 0 0 3px 0px #d4d4d4;
+    position: absolute;
+    top: -18px;
+    left: -8px;
+    font-size: 12px;
+    z-index: 1;
+    text-transform: uppercase;
+    color: white;
+    i.fas,
+    i.fab {
+      color: white;
+    }
+}
 .product-collections,
 .art-container,
 .product-recommendations {
@@ -3680,5 +3709,17 @@ i.fab {
   i.fas,
   i.fab {
     font-size: 10vw;
+  }
+}
+
+// Product Selection
+.grid-uniform {
+  .product-single__price.on-sale {
+    color: $colorTextBody;
+  }
+  .product-single__price--compare-at {
+    color: #999999;
+    font-size: em(16px);
+    font-style: italic;
   }
 }

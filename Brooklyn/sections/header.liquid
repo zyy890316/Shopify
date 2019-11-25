@@ -35,6 +35,7 @@
   }
 </style>
 
+{% comment %}
 {% assign freeShipping = 7500 %}
 <nav class="navbar sticky-top navbar-light bg-light btn-grad">
   <a class="navbar-brand text-center w-100" href="/collections/all">
@@ -45,6 +46,7 @@
     {%- endif -%}
   </a>
 </nav>
+{% endcomment %}
 
 <div data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ request.page_type }}">
   <div id="NavDrawer" class="drawer drawer--left">
