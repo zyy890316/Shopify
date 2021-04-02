@@ -114,11 +114,11 @@
 
                     {%- if item.original_line_price != item.final_line_price -%}
                       <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-                      <del class="cart__price"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_total" style="display:none !important;"></span>{{ item.original_line_price | money }}</del>
+                      <del class="cart__price">{{ item.original_line_price | money }}</del>
                       <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
-                      <span class="order-discount cart__price"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_total_2" style="display:none !important;"></span>{{ item.final_line_price | money }}</span>
+                      <span class="order-discount cart__price">{{ item.final_line_price | money }}</span>
                     {%- else -%}
-                      <span class="cart__price"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_total_3" style="display:none !important;"></span>{{ item.original_line_price | money }}</span>
+                      <span class="cart__price"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_total" style="display:none !important;"></span>{{ item.original_line_price | money }}</span>
                     {%- endif -%}
 
                     {%- if item.unit_price_measurement -%}

@@ -26,7 +26,7 @@
     "type_base_family": "avenir_next_rounded_n4",
     "type_base_size": "16px",
     "type_base_italize_titles": true,
-    "cart_type": "drawer",
+    "cart_type": "page",
     "cart_notes_enable": true,
     "share_image": "",
     "social_facebook_link": "https:\/\/www.facebook.com\/Printfurlove-101023708005213",
@@ -186,7 +186,6 @@
       },
       "1571461231513": {
         "type": "loox-all-reviews",
-        "disabled": true,
         "settings": {
           "only_photos": true,
           "hide_thumbnails": false,
